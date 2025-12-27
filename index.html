@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -13,1246 +12,2064 @@
             box-sizing: border-box;
         }
 
-```
-    :root {
-        --fire-red: #ff2d2d;
-        --fire-orange: #ff6b35;
-        --fire-yellow: #ffc857;
-        --ember-glow: #ff4500;
-        --dark-bg: #0a0a0f;
-        --darker-bg: #050508;
-        --phoenix-red: #dc143c;
-        --phoenix-magenta: #ff1493;
-        --warrior-blue: #1e90ff;
-        --warrior-cyan: #00d4ff;
-        --ice-blue: #87ceeb;
-        --gold-accent: #ffd700;
-        --bone-white: #f5f5dc;
-    }
-
-    body {
-        font-family: 'Rajdhani', sans-serif;
-        background: var(--darker-bg);
-        color: var(--bone-white);
-        min-height: 100vh;
-        overflow-x: hidden;
-        position: relative;
-    }
-
-    /* === COSMIC THUNDER BACKGROUND === */
-    .cosmic-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background: 
-            radial-gradient(ellipse at 20% 80%, rgba(255, 69, 0, 0.08) 0%, transparent 50%),
-            radial-gradient(ellipse at 80% 20%, rgba(30, 144, 255, 0.06) 0%, transparent 50%),
-            radial-gradient(ellipse at 50% 50%, rgba(139, 0, 0, 0.05) 0%, transparent 70%),
-            var(--darker-bg);
-    }
-
-    .stars {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-    }
-
-    .star {
-        position: absolute;
-        background: white;
-        border-radius: 50%;
-        animation: twinkle 3s infinite;
-    }
-
-    @keyframes twinkle {
-        0%, 100% { opacity: 0.3; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.2); }
-    }
-
-    .lightning {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        opacity: 0;
-        background: linear-gradient(135deg, 
-            transparent 40%, 
-            rgba(255, 200, 87, 0.1) 45%, 
-            rgba(255, 107, 53, 0.15) 50%, 
-            transparent 55%);
-        animation: lightning 8s infinite;
-    }
-
-    @keyframes lightning {
-        0%, 95%, 100% { opacity: 0; }
-        96%, 97% { opacity: 1; }
-        97.5% { opacity: 0; }
-        98%, 99% { opacity: 0.7; }
-    }
-
-    .lightning:nth-child(2) {
-        animation-delay: 3s;
-        background: linear-gradient(-45deg, 
-            transparent 30%, 
-            rgba(255, 69, 0, 0.12) 40%, 
-            transparent 50%);
-    }
-
-    /* === HEADER === */
-    header {
-        text-align: center;
-        padding: 60px 20px 40px;
-        position: relative;
-    }
-
-    .logo-container {
-        position: relative;
-        display: inline-block;
-    }
-
-    .phoenix-icon {
-        font-size: 80px;
-        display: block;
-        animation: phoenixGlow 3s ease-in-out infinite;
-        filter: drop-shadow(0 0 30px var(--fire-orange));
-    }
-
-    @keyframes phoenixGlow {
-        0%, 100% { 
-            filter: drop-shadow(0 0 30px var(--fire-orange)) drop-shadow(0 0 60px var(--fire-red));
-            transform: translateY(0);
+        :root {
+            --fire-red: #ff2d2d;
+            --fire-orange: #ff6b35;
+            --fire-yellow: #ffc857;
+            --ember-glow: #ff4500;
+            --dark-bg: #0a0a0f;
+            --darker-bg: #050508;
+            --phoenix-red: #dc143c;
+            --phoenix-magenta: #ff1493;
+            --warrior-blue: #1e90ff;
+            --warrior-cyan: #00d4ff;
+            --ice-blue: #87ceeb;
+            --gold-accent: #ffd700;
+            --bone-white: #f5f5dc;
         }
-        50% { 
-            filter: drop-shadow(0 0 50px var(--fire-yellow)) drop-shadow(0 0 80px var(--fire-orange));
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--darker-bg);
+            color: var(--bone-white);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* === FONDO CÓSMICO MEJORADO === */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(255, 69, 0, 0.15) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 20%, rgba(30, 144, 255, 0.12) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 50%, rgba(139, 0, 0, 0.1) 0%, transparent 60%),
+                linear-gradient(180deg, #000000 0%, #050508 30%, #0a0a0f 100%);
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .lightning {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            opacity: 0;
+            background: linear-gradient(135deg, 
+                transparent 40%, 
+                rgba(255, 200, 87, 0.15) 45%, 
+                rgba(255, 107, 53, 0.2) 50%, 
+                transparent 55%);
+            animation: lightning 10s infinite;
+        }
+
+        @keyframes lightning {
+            0%, 94%, 100% { opacity: 0; }
+            95%, 96% { opacity: 1; }
+            97% { opacity: 0; }
+            98%, 99% { opacity: 0.7; }
+        }
+
+        .lightning:nth-child(2) {
+            animation-delay: 3s;
+            background: linear-gradient(-45deg, 
+                transparent 30%, 
+                rgba(255, 69, 0, 0.18) 40%, 
+                transparent 50%);
+        }
+
+        /* === NAVEGACIÓN ANCESTRAL === */
+        .rune-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px auto;
+            padding: 15px 20px;
+            max-width: 800px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .rune-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .rune-nav-item:hover {
             transform: translateY(-5px);
+            background: rgba(255, 107, 53, 0.1);
         }
-    }
 
-    h1 {
-        font-family: 'Cinzel', serif;
-        font-size: clamp(2.5rem, 8vw, 5rem);
-        font-weight: 900;
-        letter-spacing: 0.3em;
-        margin-top: 20px;
-        background: linear-gradient(180deg, 
-            var(--fire-yellow) 0%, 
-            var(--fire-orange) 40%, 
-            var(--fire-red) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-shadow: 0 0 80px rgba(255, 107, 53, 0.5);
-        animation: fireText 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes fireText {
-        0% { filter: brightness(1); }
-        100% { filter: brightness(1.2); }
-    }
-
-    .subtitle {
-        font-family: 'Cinzel', serif;
-        font-size: clamp(1rem, 3vw, 1.5rem);
-        letter-spacing: 0.5em;
-        color: var(--bone-white);
-        opacity: 0.8;
-        margin-top: 15px;
-        text-transform: uppercase;
-    }
-
-    .ancestral-quote {
-        font-style: italic;
-        color: var(--fire-yellow);
-        opacity: 0.7;
-        margin-top: 30px;
-        font-size: 1.1rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    /* === RUNE DIVIDER === */
-    .rune-divider {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        margin: 40px 0;
-        opacity: 0.6;
-    }
-
-    .rune {
-        font-size: 1.5rem;
-        color: var(--fire-orange);
-    }
-
-    .divider-line {
-        height: 2px;
-        width: 100px;
-        background: linear-gradient(90deg, transparent, var(--fire-orange), transparent);
-    }
-
-    /* === PROTOCOL CONTAINERS === */
-    .protocols-wrapper {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 40px;
-        padding: 20px;
-        max-width: 1600px;
-        margin: 0 auto;
-    }
-
-    .protocol-card {
-        position: relative;
-        border-radius: 20px;
-        padding: 40px 30px;
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .protocol-card:hover {
-        transform: translateY(-10px);
-    }
-
-    /* === WARRIOR (MALE) CARD === */
-    .warrior-card {
-        background: linear-gradient(165deg, 
-            rgba(30, 144, 255, 0.15) 0%,
-            rgba(10, 10, 20, 0.95) 30%,
-            rgba(5, 5, 15, 0.98) 100%);
-        border: 2px solid transparent;
-        border-image: linear-gradient(180deg, var(--warrior-blue), var(--warrior-cyan), transparent) 1;
-        box-shadow: 
-            0 0 40px rgba(30, 144, 255, 0.2),
-            inset 0 0 60px rgba(30, 144, 255, 0.05);
-    }
-
-    .warrior-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, 
-            transparent, 
-            var(--warrior-cyan), 
-            var(--warrior-blue), 
-            var(--warrior-cyan), 
-            transparent);
-        animation: scanLine 3s linear infinite;
-    }
-
-    @keyframes scanLine {
-        0% { opacity: 0.5; }
-        50% { opacity: 1; }
-        100% { opacity: 0.5; }
-    }
-
-    .warrior-card .card-title {
-        background: linear-gradient(180deg, var(--ice-blue), var(--warrior-blue));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .warrior-card .card-icon {
-        color: var(--warrior-cyan);
-        text-shadow: 0 0 30px var(--warrior-blue);
-    }
-
-    .warrior-card .day-header {
-        background: linear-gradient(90deg, var(--warrior-blue), transparent);
-        border-left: 4px solid var(--warrior-cyan);
-    }
-
-    .warrior-card .highlight {
-        color: var(--warrior-cyan);
-    }
-
-    .warrior-card .kcal-badge {
-        background: linear-gradient(135deg, var(--warrior-blue), var(--warrior-cyan));
-    }
-
-    /* === PHOENIX (FEMALE) CARD === */
-    .phoenix-card {
-        background: linear-gradient(165deg, 
-            rgba(220, 20, 60, 0.15) 0%,
-            rgba(15, 5, 10, 0.95) 30%,
-            rgba(10, 5, 8, 0.98) 100%);
-        border: 2px solid transparent;
-        border-image: linear-gradient(180deg, var(--phoenix-red), var(--phoenix-magenta), transparent) 1;
-        box-shadow: 
-            0 0 40px rgba(220, 20, 60, 0.2),
-            inset 0 0 60px rgba(220, 20, 60, 0.05);
-    }
-
-    .phoenix-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, 
-            transparent, 
-            var(--phoenix-magenta), 
-            var(--phoenix-red), 
-            var(--phoenix-magenta), 
-            transparent);
-        animation: phoenixPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes phoenixPulse {
-        0%, 100% { opacity: 0.6; filter: brightness(1); }
-        50% { opacity: 1; filter: brightness(1.3); }
-    }
-
-    .phoenix-card .card-title {
-        background: linear-gradient(180deg, var(--fire-yellow), var(--phoenix-red), var(--phoenix-magenta));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .phoenix-card .card-icon {
-        color: var(--phoenix-magenta);
-        text-shadow: 0 0 30px var(--phoenix-red);
-    }
-
-    .phoenix-card .day-header {
-        background: linear-gradient(90deg, var(--phoenix-red), transparent);
-        border-left: 4px solid var(--phoenix-magenta);
-    }
-
-    .phoenix-card .highlight {
-        color: var(--phoenix-magenta);
-    }
-
-    .phoenix-card .kcal-badge {
-        background: linear-gradient(135deg, var(--phoenix-red), var(--phoenix-magenta));
-    }
-
-    /* === CARD CONTENT === */
-    .card-header {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
-    .card-icon {
-        font-size: 50px;
-        margin-bottom: 15px;
-        display: block;
-    }
-
-    .card-title {
-        font-family: 'Cinzel', serif;
-        font-size: 2rem;
-        font-weight: 700;
-        letter-spacing: 0.15em;
-        margin-bottom: 5px;
-    }
-
-    .card-subtitle {
-        font-size: 0.9rem;
-        opacity: 0.7;
-        letter-spacing: 0.3em;
-        text-transform: uppercase;
-    }
-
-    /* === DAY SECTIONS === */
-    .day-section {
-        margin-bottom: 30px;
-    }
-
-    .day-header {
-        padding: 12px 20px;
-        margin-bottom: 15px;
-        border-radius: 8px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .day-title {
-        font-family: 'Cinzel', serif;
-        font-size: 1.3rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-    }
-
-    .day-focus {
-        font-size: 0.8rem;
-        opacity: 0.8;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-    }
-
-    .kcal-badge {
-        padding: 5px 15px;
-        border-radius: 20px;
-        font-weight: 700;
-        font-size: 0.9rem;
-    }
-
-    /* === MEAL ITEMS === */
-    .meal-list {
-        list-style: none;
-    }
-
-    .meal-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 15px;
-        padding: 12px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .meal-item:last-child {
-        border-bottom: none;
-    }
-
-    .meal-time {
-        font-weight: 700;
-        min-width: 50px;
-        color: var(--fire-orange);
-        font-size: 1.1rem;
-    }
-
-    .meal-content {
-        flex: 1;
-    }
-
-    .meal-food {
-        font-weight: 500;
-        margin-bottom: 3px;
-    }
-
-    .meal-detail {
-        font-size: 0.85rem;
-        opacity: 0.6;
-    }
-
-    .highlight {
-        font-weight: 600;
-    }
-
-    /* === SUPPLEMENTS === */
-    .supplements {
-        margin-top: 15px;
-        padding: 15px;
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 10px;
-        border-left: 3px solid var(--fire-orange);
-    }
-
-    .supp-title {
-        font-weight: 700;
-        color: var(--fire-yellow);
-        margin-bottom: 8px;
-        font-size: 0.9rem;
-        letter-spacing: 0.1em;
-    }
-
-    .supp-list {
-        font-size: 0.9rem;
-        opacity: 0.8;
-    }
-
-    /* === ELECTROLYTES BOX === */
-    .electrolytes-box {
-        margin-top: 15px;
-        padding: 15px;
-        background: linear-gradient(135deg, rgba(255, 200, 87, 0.1), rgba(255, 107, 53, 0.05));
-        border-radius: 10px;
-        border: 1px solid rgba(255, 200, 87, 0.2);
-    }
-
-    .electro-title {
-        color: var(--fire-yellow);
-        font-weight: 700;
-        margin-bottom: 10px;
-        font-size: 0.9rem;
-    }
-
-    .electro-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        text-align: center;
-    }
-
-    .electro-item {
-        padding: 8px;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 8px;
-    }
-
-    .electro-value {
-        font-weight: 700;
-        font-size: 1.1rem;
-        color: var(--fire-orange);
-    }
-
-    .electro-label {
-        font-size: 0.75rem;
-        opacity: 0.6;
-        text-transform: uppercase;
-    }
-
-    /* === TRAINING SECTION === */
-    .training-section {
-        margin-top: 50px;
-        padding: 40px;
-        background: linear-gradient(180deg, 
-            rgba(255, 107, 53, 0.1) 0%,
-            rgba(10, 10, 15, 0.95) 100%);
-        border-radius: 20px;
-        border: 1px solid rgba(255, 107, 53, 0.2);
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .training-title {
-        font-family: 'Cinzel', serif;
-        font-size: 1.8rem;
-        text-align: center;
-        margin-bottom: 30px;
-        background: linear-gradient(180deg, var(--fire-yellow), var(--fire-orange));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .training-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 15px;
-    }
-
-    .training-day {
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.4);
-        border-radius: 12px;
-        text-align: center;
-        border: 1px solid rgba(255, 107, 53, 0.1);
-        transition: all 0.3s ease;
-    }
-
-    .training-day:hover {
-        border-color: var(--fire-orange);
-        transform: scale(1.05);
-    }
-
-    .training-day-num {
-        font-family: 'Cinzel', serif;
-        font-size: 1.5rem;
-        color: var(--fire-orange);
-        font-weight: 700;
-    }
-
-    .training-activity {
-        font-size: 0.85rem;
-        margin-top: 10px;
-        opacity: 0.8;
-    }
-
-    /* === MONITORING SECTION === */
-    .monitoring-section {
-        margin: 50px auto;
-        padding: 40px;
-        max-width: 1000px;
-    }
-
-    .monitoring-title {
-        font-family: 'Cinzel', serif;
-        font-size: 2rem;
-        text-align: center;
-        margin-bottom: 30px;
-        color: var(--fire-yellow);
-    }
-
-    .monitoring-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
-    }
-
-    .monitor-card {
-        padding: 25px;
-        background: rgba(255, 69, 0, 0.05);
-        border-radius: 15px;
-        border: 1px solid rgba(255, 107, 53, 0.2);
-    }
-
-    .monitor-card h4 {
-        color: var(--fire-orange);
-        margin-bottom: 15px;
-        font-size: 1.1rem;
-        letter-spacing: 0.1em;
-    }
-
-    .monitor-list {
-        list-style: none;
-    }
-
-    .monitor-list li {
-        padding: 8px 0;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 0.95rem;
-        opacity: 0.85;
-    }
-
-    .monitor-list li::before {
-        content: '⚡';
-        font-size: 0.8rem;
-    }
-
-    /* === TIMELINE SECTION === */
-    .timeline-section {
-        margin: 50px auto;
-        padding: 40px 20px;
-        max-width: 900px;
-    }
-
-    .timeline-title {
-        font-family: 'Cinzel', serif;
-        font-size: 2rem;
-        text-align: center;
-        margin-bottom: 40px;
-        background: linear-gradient(180deg, var(--fire-yellow), var(--fire-red));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .timeline {
-        position: relative;
-        padding-left: 40px;
-    }
-
-    .timeline::before {
-        content: '';
-        position: absolute;
-        left: 15px;
-        top: 0;
-        bottom: 0;
-        width: 3px;
-        background: linear-gradient(180deg, 
-            var(--fire-yellow),
-            var(--fire-orange),
-            var(--fire-red),
-            var(--phoenix-magenta));
-    }
-
-    .timeline-item {
-        position: relative;
-        padding: 20px 0;
-        padding-left: 30px;
-    }
-
-    .timeline-item::before {
-        content: '';
-        position: absolute;
-        left: -33px;
-        top: 25px;
-        width: 15px;
-        height: 15px;
-        background: var(--fire-orange);
-        border-radius: 50%;
-        box-shadow: 0 0 20px var(--fire-orange);
-    }
-
-    .timeline-day {
-        font-family: 'Cinzel', serif;
-        font-size: 1.3rem;
-        color: var(--fire-yellow);
-        margin-bottom: 8px;
-    }
-
-    .timeline-benefit {
-        opacity: 0.8;
-        line-height: 1.6;
-    }
-
-    /* === FOOTER === */
-    footer {
-        text-align: center;
-        padding: 60px 20px;
-        margin-top: 50px;
-        border-top: 1px solid rgba(255, 107, 53, 0.2);
-    }
-
-    .footer-quote {
-        font-family: 'Cinzel', serif;
-        font-size: 1.5rem;
-        color: var(--fire-orange);
-        margin-bottom: 20px;
-    }
-
-    .footer-text {
-        opacity: 0.5;
-        font-size: 0.9rem;
-    }
-
-    .fire-emoji {
-        animation: fireGlow 1s ease-in-out infinite alternate;
-    }
-
-    @keyframes fireGlow {
-        0% { filter: brightness(1); }
-        100% { filter: brightness(1.5) drop-shadow(0 0 10px var(--fire-orange)); }
-    }
-
-    /* === RESPONSIVE === */
-    @media (max-width: 768px) {
+        .rune-nav-item.active {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), rgba(30, 144, 255, 0.3));
+            border: 1px solid var(--fire-orange);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .rune-nav-icon {
+            font-size: 28px;
+            filter: drop-shadow(0 0 10px currentColor);
+        }
+
+        .phoenix-nav .rune-nav-icon {
+            color: var(--phoenix-magenta);
+        }
+
+        .warrior-nav .rune-nav-icon {
+            color: var(--warrior-cyan);
+        }
+
+        .training-nav .rune-nav-icon {
+            color: var(--fire-yellow);
+        }
+
+        .monitor-nav .rune-nav-icon {
+            color: var(--fire-orange);
+        }
+
+        .rune-nav-text {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* === HEADER MEJORADO === */
+        header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            position: relative;
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .phoenix-icon {
+            font-size: 70px;
+            display: block;
+            animation: phoenixGlow 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px var(--fire-orange)) drop-shadow(0 0 80px var(--fire-red));
+        }
+
+        @keyframes phoenixGlow {
+            0%, 100% { 
+                transform: translateY(0) scale(1);
+                filter: drop-shadow(0 0 40px var(--fire-orange)) drop-shadow(0 0 80px var(--fire-red));
+            }
+            50% { 
+                transform: translateY(-10px) scale(1.1);
+                filter: drop-shadow(0 0 60px var(--fire-yellow)) drop-shadow(0 0 100px var(--fire-orange));
+            }
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: 0.25em;
+            margin-top: 15px;
+            background: linear-gradient(180deg, 
+                var(--fire-yellow) 0%, 
+                var(--fire-orange) 40%, 
+                var(--fire-red) 80%, 
+                var(--phoenix-magenta) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 100px rgba(255, 107, 53, 0.7);
+            animation: fireText 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes fireText {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.3); }
+        }
+
+        .subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            letter-spacing: 0.4em;
+            color: var(--bone-white);
+            opacity: 0.9;
+            margin-top: 10px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        /* === PANEL DE ESTADÍSTICAS === */
+        .stats-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 25px;
+            background: linear-gradient(135deg, 
+                rgba(255, 107, 53, 0.1), 
+                rgba(30, 144, 255, 0.05));
+            border-radius: 20px;
+            border: 2px solid rgba(255, 107, 53, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--fire-orange);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--fire-yellow);
+            margin-bottom: 8px;
+            text-shadow: 0 0 20px rgba(255, 200, 87, 0.5);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* === PROTOCOLOS MEJORADOS === */
         .protocols-wrapper {
-            grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
         }
-        
+
+        .protocol-card {
+            position: relative;
+            border-radius: 25px;
+            padding: 40px 30px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            min-height: 850px;
+        }
+
+        .protocol-card:hover {
+            transform: translateY(-15px);
+        }
+
+        /* === GUERRERO === */
+        .warrior-card {
+            background: linear-gradient(165deg, 
+                rgba(30, 144, 255, 0.2) 0%,
+                rgba(10, 10, 20, 0.95) 40%,
+                rgba(5, 5, 15, 0.98) 100%);
+            border: 3px solid transparent;
+            border-image: linear-gradient(180deg, var(--warrior-blue), var(--warrior-cyan), transparent) 1;
+            box-shadow: 
+                0 0 60px rgba(30, 144, 255, 0.3),
+                inset 0 0 80px rgba(30, 144, 255, 0.08);
+        }
+
+        .warrior-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--warrior-cyan), 
+                var(--warrior-blue), 
+                var(--warrior-cyan), 
+                transparent);
+            animation: scanLine 4s linear infinite;
+        }
+
+        @keyframes scanLine {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+
+        .warrior-card .card-title {
+            background: linear-gradient(180deg, var(--ice-blue), var(--warrior-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .warrior-card .card-icon {
+            color: var(--warrior-cyan);
+            text-shadow: 0 0 40px var(--warrior-blue);
+        }
+
+        .warrior-card .day-header {
+            background: linear-gradient(90deg, rgba(30, 144, 255, 0.25), transparent);
+            border-left: 5px solid var(--warrior-cyan);
+        }
+
+        .warrior-card .highlight {
+            color: var(--warrior-cyan);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .warrior-card .kcal-badge {
+            background: linear-gradient(135deg, var(--warrior-blue), var(--warrior-cyan));
+            color: var(--dark-bg);
+            font-weight: 900;
+            box-shadow: 0 0 15px rgba(30, 144, 255, 0.5);
+        }
+
+        /* === FÉNIX === */
+        .phoenix-card {
+            background: linear-gradient(165deg, 
+                rgba(220, 20, 60, 0.2) 0%,
+                rgba(15, 5, 10, 0.95) 40%,
+                rgba(10, 5, 8, 0.98) 100%);
+            border: 3px solid transparent;
+            border-image: linear-gradient(180deg, var(--phoenix-red), var(--phoenix-magenta), transparent) 1;
+            box-shadow: 
+                0 0 60px rgba(220, 20, 60, 0.3),
+                inset 0 0 80px rgba(220, 20, 60, 0.08);
+        }
+
+        .phoenix-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--phoenix-magenta), 
+                var(--phoenix-red), 
+                var(--phoenix-magenta), 
+                transparent);
+            animation: phoenixPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes phoenixPulse {
+            0%, 100% { opacity: 0.4; filter: brightness(1); }
+            50% { opacity: 1; filter: brightness(1.5); }
+        }
+
+        .phoenix-card .card-title {
+            background: linear-gradient(180deg, var(--fire-yellow), var(--phoenix-red), var(--phoenix-magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .phoenix-card .card-icon {
+            color: var(--phoenix-magenta);
+            text-shadow: 0 0 40px var(--phoenix-red);
+        }
+
+        .phoenix-card .day-header {
+            background: linear-gradient(90deg, rgba(220, 20, 60, 0.25), transparent);
+            border-left: 5px solid var(--phoenix-magenta);
+        }
+
+        .phoenix-card .highlight {
+            color: var(--phoenix-magenta);
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+        }
+
+        .phoenix-card .kcal-badge {
+            background: linear-gradient(135deg, var(--phoenix-red), var(--phoenix-magenta));
+            color: var(--dark-bg);
+            font-weight: 900;
+            box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+        }
+
+        /* === CONTENIDO DE PROTOCOLOS === */
+        .card-header {
+            text-align: center;
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+            display: block;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            margin-bottom: 8px;
+        }
+
+        .card-subtitle {
+            font-size: 1rem;
+            opacity: 0.8;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        /* === DÍAS CON CHECKLIST === */
+        .day-section {
+            margin-bottom: 35px;
+        }
+
+        .day-header {
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .day-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .day-focus {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 5px;
+        }
+
+        .kcal-badge {
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            min-width: 130px;
+            text-align: center;
+        }
+
+        /* === COMIDAS CON CHECKBOX === */
+        .meal-list {
+            list-style: none;
+        }
+
+        .meal-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .meal-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(10px);
+        }
+
+        .meal-item.completed {
+            opacity: 0.8;
+        }
+
+        .meal-item.completed .meal-food {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        .meal-checkbox {
+            position: relative;
+            margin-top: 5px;
+        }
+
+        .meal-checkbox input {
+            display: none;
+        }
+
+        .meal-checkbox label {
+            display: block;
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--fire-orange);
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .meal-checkbox label:hover {
+            border-color: var(--fire-yellow);
+            box-shadow: 0 0 10px rgba(255, 200, 87, 0.3);
+        }
+
+        .meal-checkbox input:checked + label {
+            background: var(--fire-orange);
+            border-color: var(--fire-yellow);
+        }
+
+        .meal-checkbox input:checked + label::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--dark-bg);
+            font-weight: 900;
+            font-size: 1rem;
+        }
+
+        .meal-time {
+            font-weight: 900;
+            min-width: 60px;
+            color: var(--fire-orange);
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+        }
+
+        .meal-content {
+            flex: 1;
+        }
+
+        .meal-food {
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.4;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .meal-detail {
+            font-size: 1rem;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        .highlight {
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* === SUPLEMENTOS MEJORADOS === */
+        .supplements {
+            margin-top: 25px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border-left: 4px solid var(--fire-orange);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .supplements:hover {
+            transform: scale(1.02);
+            border-left-color: var(--fire-yellow);
+        }
+
+        .supp-title {
+            font-weight: 900;
+            color: var(--fire-yellow);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .supp-list {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* === ELECTROLITOS === */
+        .electrolytes-box {
+            margin-top: 25px;
+            padding: 25px;
+            background: linear-gradient(135deg, 
+                rgba(255, 200, 87, 0.15), 
+                rgba(255, 107, 53, 0.1));
+            border-radius: 15px;
+            border: 2px solid rgba(255, 200, 87, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .electro-title {
+            color: var(--fire-yellow);
+            font-weight: 900;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
         .electro-grid {
-            grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            text-align: center;
+        }
+
+        .electro-item {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .electro-item:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .electro-value {
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--fire-orange);
+            text-shadow: 0 0 15px rgba(255, 107, 53, 0.5);
+        }
+
+        .electro-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 8px;
+        }
+
+        /* === TIMELINE INTERACTIVO === */
+        .timeline-section {
+            margin: 60px auto;
+            padding: 50px 30px;
+            max-width: 1200px;
+        }
+
+        .timeline-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            background: linear-gradient(180deg, var(--fire-yellow), var(--fire-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.2em;
+        }
+
+        .progress-timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline-track {
+            position: relative;
+            height: 8px;
+            background: linear-gradient(90deg, 
+                rgba(255, 200, 87, 0.3), 
+                rgba(255, 107, 53, 0.5), 
+                rgba(220, 20, 60, 0.7));
+            border-radius: 4px;
+            margin: 0 60px;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-marker:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .timeline-marker[data-day="1"] { left: 0%; }
+        .timeline-marker[data-day="2"] { left: 33%; }
+        .timeline-marker[data-day="3"] { left: 66%; }
+        .timeline-marker[data-day="4"] { left: 100%; }
+
+        .marker-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--fire-orange), var(--fire-red));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-marker:hover .marker-icon {
+            box-shadow: 0 0 50px rgba(255, 200, 87, 0.7);
+            transform: scale(1.2);
+        }
+
+        .marker-label {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--fire-yellow);
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 200, 87, 0.5);
+        }
+
+        .marker-progress {
+            height: 6px;
+            background: linear-gradient(90deg, var(--fire-yellow), var(--fire-orange));
+            border-radius: 3px;
+            margin-top: 10px;
+            transition: width 1s ease;
+        }
+
+        .timeline-content {
+            display: none;
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 107, 53, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .timeline-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* === ENTRENAMIENTO === */
+        .training-section {
+            margin: 60px auto;
+            padding: 50px 40px;
+            max-width: 1000px;
+            background: linear-gradient(180deg, 
+                rgba(255, 107, 53, 0.15) 0%,
+                rgba(10, 10, 15, 0.95) 100%);
+            border-radius: 25px;
+            border: 3px solid rgba(255, 107, 53, 0.3);
+            box-shadow: 0 0 60px rgba(255, 69, 0, 0.2);
+        }
+
+        .training-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(180deg, var(--fire-yellow), var(--fire-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.2em;
         }
 
         .training-grid {
-            grid-template-columns: repeat(2, 1fr);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
         }
-    }
 
-    /* === SCROLL ANIMATIONS === */
-    .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        animation: fadeInUp 0.8s ease forwards;
-    }
-
-    @keyframes fadeInUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
+        .training-day {
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(255, 107, 53, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
-    }
 
-    .delay-1 { animation-delay: 0.2s; }
-    .delay-2 { animation-delay: 0.4s; }
-    .delay-3 { animation-delay: 0.6s; }
-</style>
-```
+        .training-day:hover {
+            border-color: var(--fire-orange);
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.3);
+        }
 
+        .training-day::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .training-day:hover::before {
+            left: 100%;
+        }
+
+        .training-day-num {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--fire-orange);
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .training-activity {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        /* === MONITOREO === */
+        .monitoring-section {
+            margin: 60px auto;
+            padding: 50px 40px;
+            max-width: 1200px;
+            background: rgba(10, 10, 15, 0.8);
+            border-radius: 25px;
+            border: 3px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .monitoring-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--fire-yellow);
+            letter-spacing: 0.2em;
+            text-shadow: 0 0 40px rgba(255, 200, 87, 0.5);
+        }
+
+        .monitoring-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .monitor-card {
+            padding: 30px;
+            background: linear-gradient(145deg, 
+                rgba(255, 69, 0, 0.1), 
+                rgba(10, 10, 20, 0.9));
+            border-radius: 20px;
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .monitor-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--fire-orange);
+            box-shadow: 0 15px 40px rgba(255, 69, 0, 0.2);
+        }
+
+        .monitor-card h4 {
+            color: var(--fire-orange);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            border-bottom: 2px solid rgba(255, 107, 53, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .monitor-list {
+            list-style: none;
+        }
+
+        .monitor-list li {
+            padding: 12px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            font-size: 1.05rem;
+            opacity: 0.9;
+            line-height: 1.5;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .monitor-list li:last-child {
+            border-bottom: none;
+        }
+
+        .monitor-list li::before {
+            content: '⚡';
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: var(--fire-yellow);
+            text-shadow: 0 0 10px rgba(255, 200, 87, 0.5);
+        }
+
+        /* === FOOTER === */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 60px;
+            border-top: 3px solid rgba(255, 107, 53, 0.3);
+            background: linear-gradient(180deg, transparent, rgba(10, 10, 15, 0.9));
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--fire-orange), 
+                var(--warrior-blue), 
+                var(--fire-orange), 
+                transparent);
+        }
+
+        .footer-quote {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--fire-orange);
+            margin-bottom: 20px;
+            line-height: 1.4;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .footer-text {
+            opacity: 0.7;
+            font-size: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .fire-emoji {
+            animation: fireGlow 1s ease-in-out infinite alternate;
+            display: inline-block;
+        }
+
+        @keyframes fireGlow {
+            0% { 
+                filter: brightness(1) drop-shadow(0 0 5px var(--fire-orange));
+                transform: scale(1);
+            }
+            100% { 
+                filter: brightness(1.5) drop-shadow(0 0 15px var(--fire-red));
+                transform: scale(1.1);
+            }
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 1024px) {
+            .protocols-wrapper {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+            
+            .protocol-card {
+                min-height: auto;
+            }
+            
+            .stats-panel {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+                letter-spacing: 0.2em;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .rune-navigation {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .rune-nav-item {
+                min-width: 100px;
+                padding: 10px 15px;
+            }
+            
+            .stats-panel {
+                grid-template-columns: 1fr;
+            }
+            
+            .training-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .monitoring-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-track {
+                margin: 0 40px;
+            }
+            
+            .card-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .training-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .electro-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .meal-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .meal-time {
+                min-width: auto;
+            }
+            
+            .timeline-track {
+                margin: 0 20px;
+            }
+            
+            .marker-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* === ANIMACIONES DE SCROLL === */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+    </style>
 </head>
 <body>
-    <!-- COSMIC BACKGROUND -->
+    <!-- FONDO CÓSMICO -->
     <div class="cosmic-bg"></div>
+    <div id="particles-js"></div>
     <div class="stars" id="stars"></div>
     <div class="lightning"></div>
     <div class="lightning"></div>
 
-```
-<!-- HEADER -->
-<header class="fade-in">
-    <div class="logo-container">
-        <span class="phoenix-icon">🔥</span>
-    </div>
-    <h1>PROTOCOLO FÉNIX</h1>
-    <p class="subtitle">Realimentación Post-96 Horas</p>
-    <p class="ancestral-quote">"De las cenizas del ayuno, renace el guerrero con fuego nuevo en sus venas"</p>
-</header>
-
-<!-- RUNE DIVIDER -->
-<div class="rune-divider">
-    <span class="rune">ᚠ</span>
-    <div class="divider-line"></div>
-    <span class="rune">ᚦ</span>
-    <div class="divider-line"></div>
-    <span class="rune">ᚱ</span>
-</div>
-
-<!-- PROTOCOLS -->
-<div class="protocols-wrapper">
-    
-    <!-- PHOENIX (FEMALE) PROTOCOL - AHORA PRIMERO -->
-    <article class="protocol-card phoenix-card fade-in delay-1">
-        <div class="card-header">
-            <span class="card-icon">🦅</span>
-            <h2 class="card-title">FÉNIX</h2>
-            <p class="card-subtitle">Protocolo Femenino • Hashimoto • Eutirox 150mg</p>
+    <!-- HEADER -->
+    <header class="fade-in">
+        <div class="logo-container">
+            <span class="phoenix-icon">🔥</span>
         </div>
+        <h1>PROTOCOLO FÉNIX</h1>
+        <p class="subtitle">Realimentación Post-96 Horas • Guerrero + Fénix</p>
+    </header>
 
-        <!-- EUTIROX REMINDER -->
-        <div class="supplements" style="margin-bottom: 20px; border-left-color: var(--phoenix-magenta);">
-            <div class="supp-title" style="color: var(--phoenix-magenta);">⚠️ IMPORTANTE - TODOS LOS DÍAS</div>
-            <div class="supp-list">6:30h → EUTIROX 150mg en ayunas (solo agua) → Esperar 60 min</div>
+    <!-- NAVEGACIÓN ANCESTRAL -->
+    <nav class="rune-navigation fade-in delay-1">
+        <div class="rune-nav-item phoenix-nav active" data-target="phoenix">
+            <span class="rune-nav-icon">🦅</span>
+            <span class="rune-nav-text">FÉNIX</span>
         </div>
-
-        <!-- DAY 1 -->
-        <section class="day-section">
-            <div class="day-header">
-                <div>
-                    <h3 class="day-title">DÍA 1</h3>
-                    <span class="day-focus">Electrolitos + Mucosa</span>
-                </div>
-                <span class="kcal-badge">800 kcal</span>
-            </div>
-            <ul class="meal-list">
-                <li class="meal-item">
-                    <span class="meal-time">8h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Caldo de huesos (400ml)</div>
-                        <div class="meal-detail">+ 0.5g sal marina + 200mg Mg + <span class="highlight">B1 100mg</span></div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">10h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Caldo de huesos (300ml)</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">12h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Caldo de huesos (300ml)</div>
-                        <div class="meal-detail">+ ¼ aguacate</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">14h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">🧘 Descanso + Meditación</div>
-                        <div class="meal-detail">Afterglow consolidación</div>
-                    </div>
-                </li>
-            </ul>
-            <div class="electrolytes-box">
-                <div class="electro-title">⚡ ELECTROLITOS TOTALES</div>
-                <div class="electro-grid">
-                    <div class="electro-item">
-                        <div class="electro-value">3g</div>
-                        <div class="electro-label">Sodio</div>
-                    </div>
-                    <div class="electro-item">
-                        <div class="electro-value">1.5g</div>
-                        <div class="electro-label">Potasio</div>
-                    </div>
-                    <div class="electro-item">
-                        <div class="electro-value">400mg</div>
-                        <div class="electro-label">Magnesio</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- DAY 2 -->
-        <section class="day-section">
-            <div class="day-header">
-                <div>
-                    <h3 class="day-title">DÍA 2</h3>
-                    <span class="day-focus">Prebióticos Gentiles</span>
-                </div>
-                <span class="kcal-badge">1200 kcal</span>
-            </div>
-            <ul class="meal-list">
-                <li class="meal-item">
-                    <span class="meal-time">8h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">2 huevos cocidos + champiñones</div>
-                        <div class="meal-detail">Salteados suaves</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">10h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Caldo + 4 nueces de Brasil</div>
-                        <div class="meal-detail"><span class="highlight">Selenio para tiroides</span></div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">12h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Pollo plancha 150g</div>
-                        <div class="meal-detail">+ calabacín + ½ aguacate</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">14h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Pera pequeña + yogur de cabra</div>
-                        <div class="meal-detail">Probiótico suave</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">16h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Caldo + pepino + aceitunas</div>
-                    </div>
-                </li>
-            </ul>
-            <div class="supplements">
-                <div class="supp-title">💊 SUPLEMENTOS HASHIMOTO</div>
-                <div class="supp-list">Selenio 200mcg • <span class="highlight">Myo-inositol 600mg</span></div>
-            </div>
-        </section>
-
-        <!-- DAY 3 -->
-        <section class="day-section">
-            <div class="day-header">
-                <div>
-                    <h3 class="day-title">DÍA 3</h3>
-                    <span class="day-focus">Microbiota + Antiinflamatorio</span>
-                </div>
-                <span class="kcal-badge">1600 kcal</span>
-            </div>
-            <ul class="meal-list">
-                <li class="meal-item">
-                    <span class="meal-time">8h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">2 huevos + calabacín</div>
-                        <div class="meal-detail">Salteado en aceite de oliva</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">10h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Manzana verde + 5 nueces Brasil</div>
-                        <div class="meal-detail">+ kéfir de cabra</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">12h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Pescado blanco 150g</div>
-                        <div class="meal-detail">+ ½ calabaza asada</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">14h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Hummus + pepino + zanahoria</div>
-                        <div class="meal-detail">Prebióticos naturales</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">16h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Chuletas cordero 200g</div>
-                        <div class="meal-detail">+ <span class="highlight">calabaza asada</span></div>
-                    </div>
-                </li>
-            </ul>
-            <div class="supplements">
-                <div class="supp-title">💊 SUPLEMENTOS HASHIMOTO</div>
-                <div class="supp-list"><span class="highlight">Nigella sativa 1g</span> • Complejo B</div>
-            </div>
-        </section>
-    </article>
-
-    <!-- WARRIOR (MALE) PROTOCOL - AHORA SEGUNDO -->
-    <article class="protocol-card warrior-card fade-in delay-2">
-        <div class="card-header">
-            <span class="card-icon">⚔️</span>
-            <h2 class="card-title">GUERRERO</h2>
-            <p class="card-subtitle">Protocolo Masculino • 40 años • CrossFit</p>
+        <div class="rune-nav-item warrior-nav" data-target="warrior">
+            <span class="rune-nav-icon">⚔️</span>
+            <span class="rune-nav-text">GUERRERO</span>
         </div>
-
-        <!-- DAY 1 -->
-        <section class="day-section">
-            <div class="day-header">
-                <div>
-                    <h3 class="day-title">DÍA 1</h3>
-                    <span class="day-focus">Recuperación Mitocondrial</span>
-                </div>
-                <span class="kcal-badge">1000 kcal</span>
-            </div>
-            <ul class="meal-list">
-                <li class="meal-item">
-                    <span class="meal-time">8h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Caldo de huesos (500ml)</div>
-                        <div class="meal-detail">+ 1g sal marina + 200mg magnesio</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">10h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Caldo de huesos (300ml)</div>
-                        <div class="meal-detail">+ ½ aguacate</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">12h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Caldo de huesos (300ml)</div>
-                        <div class="meal-detail">+ <span class="highlight">B1 100mg</span></div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">14h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">🚶 Caminata ligera 30min</div>
-                        <div class="meal-detail">↓ Inflamación activa</div>
-                    </div>
-                </li>
-            </ul>
-            <div class="electrolytes-box">
-                <div class="electro-title">⚡ ELECTROLITOS TOTALES</div>
-                <div class="electro-grid">
-                    <div class="electro-item">
-                        <div class="electro-value">4g</div>
-                        <div class="electro-label">Sodio</div>
-                    </div>
-                    <div class="electro-item">
-                        <div class="electro-value">2g</div>
-                        <div class="electro-label">Potasio</div>
-                    </div>
-                    <div class="electro-item">
-                        <div class="electro-value">400mg</div>
-                        <div class="electro-label">Magnesio</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- DAY 2 -->
-        <section class="day-section">
-            <div class="day-header">
-                <div>
-                    <h3 class="day-title">DÍA 2</h3>
-                    <span class="day-focus">PGC-1α Activación</span>
-                </div>
-                <span class="kcal-badge">1500 kcal</span>
-            </div>
-            <ul class="meal-list">
-                <li class="meal-item">
-                    <span class="meal-time">8h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">3 huevos + champiñones</div>
-                        <div class="meal-detail">Salteados en aceite de oliva</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">10h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Caldo + 6 nueces de Brasil</div>
-                        <div class="meal-detail"><span class="highlight">Selenio natural</span></div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">12h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Pechuga de pollo 200g</div>
-                        <div class="meal-detail">+ calabacín + 1 aguacate</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">14h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">🏋️ CrossFit LIGERO 30min</div>
-                        <div class="meal-detail">Kettlebells + movilidad</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">16h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Caldo + atún natural + pepino</div>
-                    </div>
-                </li>
-            </ul>
-            <div class="supplements">
-                <div class="supp-title">💊 SUPLEMENTOS</div>
-                <div class="supp-list">Selenio 200mcg • Zinc 30mg</div>
-            </div>
-        </section>
-
-        <!-- DAY 3 -->
-        <section class="day-section">
-            <div class="day-header">
-                <div>
-                    <h3 class="day-title">DÍA 3</h3>
-                    <span class="day-focus">Mitocondrias Peak</span>
-                </div>
-                <span class="kcal-badge">2000 kcal</span>
-            </div>
-            <ul class="meal-list">
-                <li class="meal-item">
-                    <span class="meal-time">8h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">3 huevos + calabacín</div>
-                        <div class="meal-detail">+ 1 cda aceite MCT</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">10h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Manzana verde + 10 nueces Brasil</div>
-                        <div class="meal-detail">+ yogur griego</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">12h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Salmón 200g</div>
-                        <div class="meal-detail">+ ½ batata asada</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">14h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">🔥 CrossFit MODERADO 45min</div>
-                        <div class="meal-detail">Fuerza + MetCon</div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">16h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Chuletas cordero 300g</div>
-                        <div class="meal-detail">+ <span class="highlight">calabaza asada</span></div>
-                    </div>
-                </li>
-                <li class="meal-item">
-                    <span class="meal-time">18h</span>
-                    <div class="meal-content">
-                        <div class="meal-food">Caldo + langostinos + espárragos</div>
-                    </div>
-                </li>
-            </ul>
-            <div class="supplements">
-                <div class="supp-title">💊 SUPLEMENTOS</div>
-                <div class="supp-list">Complejo B • CoQ10 200mg</div>
-            </div>
-        </section>
-    </article>
-
-</div>
-
-<!-- TRAINING SECTION (MALE ONLY) -->
-<section class="training-section fade-in delay-3">
-    <h3 class="training-title">⚔️ ENTRENAMIENTO PGC-1α • GUERRERO</h3>
-    <div class="training-grid">
-        <div class="training-day">
-            <div class="training-day-num">DÍA 2</div>
-            <div class="training-activity">Movilidad<br>+ KB ligeros<br>30 min</div>
+        <div class="rune-nav-item training-nav" data-target="training">
+            <span class="rune-nav-icon">🏋️</span>
+            <span class="rune-nav-text">ENTRENAMIENTO</span>
         </div>
-        <div class="training-day">
-            <div class="training-day-num">DÍA 3</div>
-            <div class="training-activity">Fuerza 4x8<br>(70% 1RM)<br>+ 10min row</div>
+        <div class="rune-nav-item monitor-nav" data-target="monitoring">
+            <span class="rune-nav-icon">⚡</span>
+            <span class="rune-nav-text">MONITOREO</span>
         </div>
-        <div class="training-day">
-            <div class="training-day-num">DÍA 4</div>
-            <div class="training-activity">MetCon<br>20min<br>+ movilidad</div>
+    </nav>
+
+    <!-- PANEL DE ESTADÍSTICAS -->
+    <div class="stats-panel fade-in delay-2">
+        <div class="stat-item">
+            <div class="stat-value" id="currentDay">1</div>
+            <div class="stat-label">DÍA ACTUAL</div>
         </div>
-        <div class="training-day">
-            <div class="training-day-num">DÍA 5</div>
-            <div class="training-activity">HIIT<br>15min<br>+ foam roll</div>
+        <div class="stat-item">
+            <div class="stat-value" id="completionRate">0%</div>
+            <div class="stat-label">COMPLETADO</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="totalMeals">0/18</div>
+            <div class="stat-label">COMIDAS</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="energyLevel">⚡⚡⚡⚡</div>
+            <div class="stat-label">ENERGÍA</div>
         </div>
     </div>
-</section>
 
-<!-- MONITORING SECTION -->
-<section class="monitoring-section">
-    <h3 class="monitoring-title">⚡ MONITOREO CRÍTICO</h3>
-    <div class="monitoring-grid">
-        <div class="monitor-card">
-            <h4>DURANTE DÍAS 1-3</h4>
-            <ul class="monitor-list">
-                <li>Pulso cada 4h (60-90 lpm normal)</li>
-                <li>Glucosa capilar si mareo (&lt;70 = caldo)</li>
-                <li>Peso diario (↓2-3kg esperado)</li>
-                <li>Hinchazón/diarrea = reducir volumen</li>
-            </ul>
-        </div>
-        <div class="monitor-card">
-            <h4>LABORATORIO DÍA 7</h4>
-            <ul class="monitor-list">
-                <li>TSH / T3 / T4 (Hashimoto tracking)</li>
-                <li>PCR (inflamación)</li>
-                <li>Electrolitos completos</li>
-                <li>Glucosa en ayunas</li>
-            </ul>
-        </div>
-        <div class="monitor-card">
-            <h4>SEÑALES DE ALARMA</h4>
-            <ul class="monitor-list">
-                <li>Palpitaciones persistentes</li>
-                <li>Confusión mental</li>
-                <li>Debilidad extrema</li>
-                <li>Edema (hinchazón manos/pies)</li>
-            </ul>
-        </div>
+    <!-- PROTOCOLOS -->
+    <div class="protocols-wrapper">
+        
+        <!-- PROTOCOLO FÉNIX -->
+        <article class="protocol-card phoenix-card fade-in delay-1" id="phoenix-protocol">
+            <div class="card-header">
+                <span class="card-icon">🦅</span>
+                <h2 class="card-title">FÉNIX</h2>
+                <p class="card-subtitle">Protocolo Femenino • Hashimoto • 1600kcal Progresivo</p>
+            </div>
+
+            <!-- DÍA 1 -->
+            <section class="day-section" data-day="1">
+                <div class="day-header">
+                    <div>
+                        <h3 class="day-title">DÍA 1</h3>
+                        <span class="day-focus">Electrolitos + Mucosa Intestinal</span>
+                    </div>
+                    <span class="kcal-badge">800 KCAL</span>
+                </div>
+                <ul class="meal-list">
+                    <li class="meal-item" data-meal="phoenix-d1-1">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="phoenix-d1-1">
+                            <label for="phoenix-d1-1"></label>
+                        </div>
+                        <span class="meal-time">8h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Caldo de Huesos (400ml)</div>
+                            <div class="meal-detail">+ 1g sal marina + 200mg magnesio</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="phoenix-d1-2">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="phoenix-d1-2">
+                            <label for="phoenix-d1-2"></label>
+                        </div>
+                        <span class="meal-time">10h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Caldo de Huesos (300ml)</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="phoenix-d1-3">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="phoenix-d1-3">
+                            <label for="phoenix-d1-3"></label>
+                        </div>
+                        <span class="meal-time">12h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Caldo de Huesos (300ml)</div>
+                            <div class="meal-detail">+ ¼ aguacate batido</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="phoenix-d1-4">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="phoenix-d1-4">
+                            <label for="phoenix-d1-4"></label>
+                        </div>
+                        <span class="meal-time">14h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">🚶 Caminata Suave 20min</div>
+                            <div class="meal-detail">+ Respiración diafragmática</div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="electrolytes-box">
+                    <div class="electro-title">⚡ ELECTROLITOS TOTALES DÍA 1</div>
+                    <div class="electro-grid">
+                        <div class="electro-item">
+                            <div class="electro-value">4g</div>
+                            <div class="electro-label">Sodio</div>
+                        </div>
+                        <div class="electro-item">
+                            <div class="electro-value">1.5g</div>
+                            <div class="electro-label">Potasio</div>
+                        </div>
+                        <div class="electro-item">
+                            <div class="electro-value">400mg</div>
+                            <div class="electro-label">Magnesio</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DÍA 2 -->
+            <section class="day-section" data-day="2">
+                <div class="day-header">
+                    <div>
+                        <h3 class="day-title">DÍA 2</h3>
+                        <span class="day-focus">Prebióticos + Microbiota</span>
+                    </div>
+                    <span class="kcal-badge">1200 KCAL</span>
+                </div>
+                <ul class="meal-list">
+                    <li class="meal-item" data-meal="phoenix-d2-1">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="phoenix-d2-1">
+                            <label for="phoenix-d2-1"></label>
+                        </div>
+                        <span class="meal-time">8h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">2 Huevos Cocidos + Champiñones</div>
+                            <div class="meal-detail">Salteado suave sin lácteos</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="phoenix-d2-2">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="phoenix-d2-2">
+                            <label for="phoenix-d2-2"></label>
+                        </div>
+                        <span class="meal-time">10h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Caldo + 3 Nueces de Brasil</div>
+                            <div class="meal-detail"><span class="highlight">Selenio tiroideo máximo</span></div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="phoenix-d2-3">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="phoenix-d2-3">
+                            <label for="phoenix-d2-3"></label>
+                        </div>
+                        <span class="meal-time">12h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Pollo Plancha 150g + Calabacín</div>
+                            <div class="meal-detail">+ ½ aguacate Hass</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="phoenix-d2-4">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="phoenix-d2-4">
+                            <label for="phoenix-d2-4"></label>
+                        </div>
+                        <span class="meal-time">14h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">🚶 Caminata Enérgica 30min</div>
+                            <div class="meal-detail">+ Yoga suave + Estiramientos</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="phoenix-d2-5">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="phoenix-d2-5">
+                            <label for="phoenix-d2-5"></label>
+                        </div>
+                        <span class="meal-time">16h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Caldo + Pepino + Aceitunas</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="phoenix-d2-6">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="phoenix-d2-6">
+                            <label for="phoenix-d2-6"></label>
+                        </div>
+                        <span class="meal-time">18h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">5g Glutamina en Caldo</div>
+                            <div class="meal-detail"><span class="highlight">Reparación intestinal selectiva</span></div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- DÍA 3 -->
+            <section class="day-section" data-day="3">
+                <div class="day-header">
+                    <div>
+                        <h3 class="day-title">DÍA 3</h3>
+                        <span class="day-focus">Antiinflamatorio Máximo</span>
+                    </div>
+                    <span class="kcal-badge">1600 KCAL</span>
+                </div>
+                <ul class="meal-list">
+                    <li class="meal-item" data-meal="phoenix-d3-1">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="phoenix-d3-1">
+                            <label for="phoenix-d3-1"></label>
+                        </div>
+                        <span class="meal-time">8h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">2 Huevos + Calabacín</div>
+                            <div class="meal-detail">Salteado en aceite de oliva virgen</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="phoenix-d3-2">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="phoenix-d3-2">
+                            <label for="phoenix-d3-2"></label>
+                        </div>
+                        <span class="meal-time">10h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Manzana Verde + 4 Nueces Brasil</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="phoenix-d3-3">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="phoenix-d3-3">
+                            <label for="phoenix-d3-3"></label>
+                        </div>
+                        <span class="meal-time">12h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Pescado Blanco 150g</div>
+                            <div class="meal-detail">+ Calabaza asada al horno</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="phoenix-d3-4">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="phoenix-d3-4">
+                            <label for="phoenix-d3-4"></label>
+                        </div>
+                        <span class="meal-time">14h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Hummus + Crudités</div>
+                            <div class="meal-detail">Pepino + Zanahoria + Apio</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="phoenix-d3-5">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="phoenix-d3-5">
+                            <label for="phoenix-d3-5"></label>
+                        </div>
+                        <span class="meal-time">16h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Chuletas Cordero 150g</div>
+                            <div class="meal-detail">+ Brócoli al vapor con ajo</div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="supplements">
+                    <div class="supp-title">🌿 ANTIINFLAMATORIOS NATURALES</div>
+                    <div class="supp-list">
+                        1g Cúrcuma + Pimienta negra (biodisponibilidad)<br>
+                        Protocolo sin lácteos • Sin gluten • Sin procesados
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- PROTOCOLO GUERRERO -->
+        <article class="protocol-card warrior-card fade-in delay-2" id="warrior-protocol">
+            <div class="card-header">
+                <span class="card-icon">⚔️</span>
+                <h2 class="card-title">GUERRERO</h2>
+                <p class="card-subtitle">40 años • CrossFit • 2000kcal Progresivo</p>
+            </div>
+
+            <!-- DÍA 1 -->
+            <section class="day-section" data-day="1">
+                <div class="day-header">
+                    <div>
+                        <h3 class="day-title">DÍA 1</h3>
+                        <span class="day-focus">Recuperación Mitocondrial</span>
+                    </div>
+                    <span class="kcal-badge">1000 KCAL</span>
+                </div>
+                <ul class="meal-list">
+                    <li class="meal-item" data-meal="warrior-d1-1">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="warrior-d1-1">
+                            <label for="warrior-d1-1"></label>
+                        </div>
+                        <span class="meal-time">8h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Caldo de Huesos (500ml)</div>
+                            <div class="meal-detail">+ 1.5g sal marina + 200mg magnesio</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="warrior-d1-2">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="warrior-d1-2">
+                            <label for="warrior-d1-2"></label>
+                        </div>
+                        <span class="meal-time">10h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Caldo de Huesos (300ml)</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="warrior-d1-3">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="warrior-d1-3">
+                            <label for="warrior-d1-3"></label>
+                        </div>
+                        <span class="meal-time">12h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Caldo de Huesos (300ml)</div>
+                            <div class="meal-detail">+ ¼ aguacate batido</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="warrior-d1-4">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="warrior-d1-4">
+                            <label for="warrior-d1-4"></label>
+                        </div>
+                        <span class="meal-time">14h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">🚶 Caminata Ligera 30min</div>
+                            <div class="meal-detail">+ 5min movilidad articular</div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="electrolytes-box">
+                    <div class="electro-title">⚡ ELECTROLITOS TOTALES DÍA 1</div>
+                    <div class="electro-grid">
+                        <div class="electro-item">
+                            <div class="electro-value">5g</div>
+                            <div class="electro-label">Sodio</div>
+                        </div>
+                        <div class="electro-item">
+                            <div class="electro-value">2g</div>
+                            <div class="electro-label">Potasio</div>
+                        </div>
+                        <div class="electro-item">
+                            <div class="electro-value">400mg</div>
+                            <div class="electro-label">Magnesio</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DÍA 2 -->
+            <section class="day-section" data-day="2">
+                <div class="day-header">
+                    <div>
+                        <h3 class="day-title">DÍA 2</h3>
+                        <span class="day-focus">Activación PGC-1α</span>
+                    </div>
+                    <span class="kcal-badge">1500 KCAL</span>
+                </div>
+                <ul class="meal-list">
+                    <li class="meal-item" data-meal="warrior-d2-1">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="warrior-d2-1">
+                            <label for="warrior-d2-1"></label>
+                        </div>
+                        <span class="meal-time">8h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">3 Huevos + Champiñones</div>
+                            <div class="meal-detail">Salteados en aceite de oliva virgen extra</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="warrior-d2-2">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="warrior-d2-2">
+                            <label for="warrior-d2-2"></label>
+                        </div>
+                        <span class="meal-time">10h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Caldo de Huesos + 4 Nueces Brasil</div>
+                            <div class="meal-detail"><span class="highlight">Selenio natural máximo</span></div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="warrior-d2-3">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="warrior-d2-3">
+                            <label for="warrior-d2-3"></label>
+                        </div>
+                        <span class="meal-time">12h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Pechuga Pollo 150g + Calabacín</div>
+                            <div class="meal-detail">+ ½ aguacate completo</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="warrior-d2-4">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="warrior-d2-4">
+                            <label for="warrior-d2-4"></label>
+                        </div>
+                        <span class="meal-time">14h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">🏋️ Movilidad + Caminata Cargada</div>
+                            <div class="meal-detail">30min • 25% RM • Activación neuronal</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="warrior-d2-5">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="warrior-d2-5">
+                            <label for="warrior-d2-5"></label>
+                        </div>
+                        <span class="meal-time">16h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Caldo + Atún Natural + Pepino</div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="supplements">
+                    <div class="supp-title">💊 SUPLEMENTACIÓN ESTRATÉGICA</div>
+                    <div class="supp-list">
+                        Solo electrolitos Días 1-3 • Selenio+Zinc a partir Día 4 • CoQ10 Día 6+
+                    </div>
+                </div>
+            </section>
+
+            <!-- DÍA 3 -->
+            <section class="day-section" data-day="3">
+                <div class="day-header">
+                    <div>
+                        <h3 class="day-title">DÍA 3</h3>
+                        <span class="day-focus">Mitocondrias al Máximo</span>
+                    </div>
+                    <span class="kcal-badge">2000 KCAL</span>
+                </div>
+                <ul class="meal-list">
+                    <li class="meal-item" data-meal="warrior-d3-1">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="warrior-d3-1">
+                            <label for="warrior-d3-1"></label>
+                        </div>
+                        <span class="meal-time">8h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">3 Huevos + Calabacín</div>
+                            <div class="meal-detail">+ 1 cucharada aceite MCT</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="warrior-d3-2">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="warrior-d3-2">
+                            <label for="warrior-d3-2"></label>
+                        </div>
+                        <span class="meal-time">10h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Manzana Verde + 8 Nueces Brasil</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="warrior-d3-3">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="warrior-d3-3">
+                            <label for="warrior-d3-3"></label>
+                        </div>
+                        <span class="meal-time">12h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Salmón 200g</div>
+                            <div class="meal-detail">+ ½ batata pequeña asada</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="warrior-d3-4">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="warrior-d3-4">
+                            <label for="warrior-d3-4"></label>
+                        </div>
+                        <span class="meal-time">14h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">🔥 Fuerza Neuronal 4x8</div>
+                            <div class="meal-detail">70% 1RM + Movilidad articular</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="warrior-d3-5">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="warrior-d3-5">
+                            <label for="warrior-d3-5"></label>
+                        </div>
+                        <span class="meal-time">16h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Chuletas Cordero 200g</div>
+                            <div class="meal-detail">+ Calabaza asada en rodajas</div>
+                        </div>
+                    </li>
+                    <li class="meal-item" data-meal="warrior-d3-6">
+                        <div class="meal-checkbox">
+                            <input type="checkbox" id="warrior-d3-6">
+                            <label for="warrior-d3-6"></label>
+                        </div>
+                        <span class="meal-time">18h</span>
+                        <div class="meal-content">
+                            <div class="meal-food">Caldo + Langostinos + Espárragos</div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="supplements">
+                    <div class="supp-title">⚡ ENTRENAMIENTO GUERRERO</div>
+                    <div class="supp-list">
+                        <strong>Día 4:</strong> CrossFit 80% intensidad • Sin PRs<br>
+                        <strong>Día 5+:</strong> Entrenamiento regular • PRs Días 10-14
+                    </div>
+                </div>
+            </section>
+        </article>
     </div>
-</section>
 
-<!-- TIMELINE SECTION -->
-<section class="timeline-section">
-    <h3 class="timeline-title">🔥 TIMELINE DE BENEFICIOS</h3>
-    <div class="timeline">
-        <div class="timeline-item">
-            <div class="timeline-day">DÍA 1</div>
-            <div class="timeline-benefit">Energía estable restaurándose. Electrolitos reequilibrándose. Sistema digestivo despertando suavemente.</div>
+    <!-- TIMELINE INTERACTIVO -->
+    <section class="timeline-section fade-in delay-3">
+        <h3 class="timeline-title">🔥 TIMELINE DE EVOLUCIÓN</h3>
+        <div class="progress-timeline">
+            <div class="timeline-track">
+                <div class="timeline-marker" data-day="1">
+                    <div class="marker-icon">🔥</div>
+                    <div class="marker-label">DÍA 1</div>
+                    <div class="marker-progress" style="width: 33%"></div>
+                </div>
+                <div class="timeline-marker" data-day="2">
+                    <div class="marker-icon">⚡</div>
+                    <div class="marker-label">DÍA 2</div>
+                    <div class="marker-progress" style="width: 66%"></div>
+                </div>
+                <div class="timeline-marker" data-day="3">
+                    <div class="marker-icon">🌟</div>
+                    <div class="marker-label">DÍA 3</div>
+                    <div class="marker-progress" style="width: 100%"></div>
+                </div>
+            </div>
+            
+            <div class="timeline-content" id="timeline-day1">
+                <h4>🔥 REGENERACIÓN INICIAL</h4>
+                <p>Energía estable restaurándose • Electrolitos reequilibrándose • Sistema digestivo despertando suavemente • Mucosa intestinal reparándose • Mitocondrias iniciando biogénesis.</p>
+            </div>
+            <div class="timeline-content" id="timeline-day2">
+                <h4>⚡ ACTIVACIÓN PGC-1α</h4>
+                <p>PGC-1α activándose al máximo • Nuevas mitocondrias naciendo • Microbiota recolonizando territorio limpio • Sensibilidad a insulina optimizándose • Autofagia celular activa.</p>
+            </div>
+            <div class="timeline-content" id="timeline-day3">
+                <h4>🌟 TRANSFORMACIÓN COMPLETA</h4>
+                <p>Euforia afterglow en su pico • Regeneración celular máxima • Sistema inmune renovado con células "naïve" • Inflamación reducida al mínimo • Homeostasis total alcanzada.</p>
+            </div>
         </div>
-        <div class="timeline-item">
-            <div class="timeline-day">DÍA 2</div>
-            <div class="timeline-benefit">PGC-1α activándose. Mitocondrias nuevas comenzando a nacer. Microbiota recolonizando territorio limpio.</div>
-        </div>
-        <div class="timeline-item">
-            <div class="timeline-day">DÍA 3</div>
-            <div class="timeline-benefit">Euforia afterglow en su pico. Regeneración celular activa. Sistema inmune renovándose con células "naïve".</div>
-        </div>
-        <div class="timeline-item">
-            <div class="timeline-day">DÍAS 4-7</div>
-            <div class="timeline-benefit">PRs potenciales en CrossFit. Claridad mental sostenida. Sensibilidad a insulina optimizada. ¡El fénix ha renacido!</div>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-    <div class="footer-quote">
-        "No ayunamos para morir. Ayunamos para renacer." <span class="fire-emoji">🔥</span>
-    </div>
-    <p class="footer-text">Protocolo Fénix • CrossFit Vallecas • Asmil & Sarai • Diciembre 2024</p>
-</footer>
+    <!-- ENTRENAMIENTO -->
+    <section class="training-section fade-in delay-4" id="training-section">
+        <h3 class="training-title">⚔️ ENTRENAMIENTO PGC-1α • GUERRERO</h3>
+        <div class="training-grid">
+            <div class="training-day">
+                <div class="training-day-num">DÍA 2</div>
+                <div class="training-activity">Movilidad Articular<br>+ Kettlebells Ligeros<br>30min Activación</div>
+            </div>
+            <div class="training-day">
+                <div class="training-day-num">DÍA 3</div>
+                <div class="training-activity">Fuerza Neuronal 4x8<br>70% 1RM<br>+ Movilidad Completa</div>
+            </div>
+            <div class="training-day">
+                <div class="training-day-num">DÍA 4</div>
+                <div class="training-activity">CrossFit 80%<br>Sin PRs<br>Recuperación Activa</div>
+            </div>
+            <div class="training-day">
+                <div class="training-day-num">DÍA 5+</div>
+                <div class="training-activity">Entrenamiento Regular<br>PRs Días 10-14<br>Supercompensación</div>
+            </div>
+        </div>
+    </section>
 
-<!-- STARS GENERATION -->
-<script>
-    // Generate stars
-    const starsContainer = document.getElementById('stars');
-    for (let i = 0; i < 100; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.width = Math.random() * 3 + 1 + 'px';
-        star.style.height = star.style.width;
-        star.style.animationDelay = Math.random() * 3 + 's';
-        star.style.animationDuration = (Math.random() * 2 + 2) + 's';
-        starsContainer.appendChild(star);
-    }
+    <!-- MONITOREO -->
+    <section class="monitoring-section fade-in delay-4" id="monitoring-section">
+        <h3 class="monitoring-title">⚡ MONITOREO DE ALTO RENDIMIENTO</h3>
+        <div class="monitoring-grid">
+            <div class="monitor-card">
+                <h4>MÉTRICAS DIARIAS CLAVE</h4>
+                <ul class="monitor-list">
+                    <li>Pulso cada 4h (60-90 lpm óptimo)</li>
+                    <li>Glucosa capilar si mareo (&lt;70 = caldo inmediato)</li>
+                    <li>Peso matutino: estabilizar o +0.5-1kg D1→D3</li>
+                    <li>Síntomas digestivos: ajustar volumen/complejidad</li>
+                </ul>
+            </div>
+            <div class="monitor-card">
+                <h4>BENEFICIOS ESPERADOS</h4>
+                <ul class="monitor-list">
+                    <li>Día 1-2: Energía estable + Electrolitos óptimos</li>
+                    <li>Día 3: Pico afterglow + Claridad mental máxima</li>
+                    <li>Día 4-7: Microbiota recolonizada + Inflamación ↓</li>
+                    <li>Día 10-14: PRs CrossFit + Sensibilidad insulina ↑</li>
+                </ul>
+            </div>
+            <div class="monitor-card">
+                <h4>OPTIMIZACIÓN AVANZADA</h4>
+                <ul class="monitor-list">
+                    <li>Suplementación escalonada Día 4+</li>
+                    <li>Reintroducción lácteos Día 7+ (solo si tolerancia)</li>
+                    <li>Laboratorio Día 7: TSH, T3, T4, PCR, Ferritina</li>
+                    <li>Entrenamiento progresivo sin sobrecarga</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-    // Intersection Observer for animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.animationPlayState = 'running';
-            }
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-quote">
+            "Del ayuno prolongado renace el guerrero; de las cenizas metabólicas, el fénix se alza con mitocondrias nuevas." 
+            <span class="fire-emoji">🔥</span>
+        </div>
+        <p class="footer-text">
+            Protocolo Fénix v4.0 • Sistema Interactivo Completo • CrossFit Vallecas<br>
+            Asmil & Sarai • Sistema Ancestral de Regeneración • Diciembre 2024
+        </p>
+    </footer>
+
+    <!-- SCRIPT COMPLETO -->
+    <script>
+        // Generar estrellas dinámicas
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            
+            const size = Math.random() * 4 + 1;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            
+            star.style.animationDelay = Math.random() * 5 + 's';
+            star.style.animationDuration = (Math.random() * 4 + 2) + 's';
+            star.style.opacity = Math.random() * 0.8 + 0.2;
+            
+            starsContainer.appendChild(star);
+        }
+
+        // Sistema de navegación
+        const navItems = document.querySelectorAll('.rune-nav-item');
+        const sections = {
+            phoenix: document.getElementById('phoenix-protocol'),
+            warrior: document.getElementById('warrior-protocol'),
+            training: document.getElementById('training-section'),
+            monitoring: document.getElementById('monitoring-section')
+        };
+
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const target = this.dataset.target;
+                
+                // Actualizar navegación activa
+                navItems.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Scroll suave a la sección
+                if (sections[target]) {
+                    sections[target].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
-    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.fade-in').forEach(el => {
-        el.style.animationPlayState = 'paused';
-        observer.observe(el);
-    });
-</script>
-```
+        // Sistema de checklist
+        const checkboxes = document.querySelectorAll('.meal-checkbox input');
+        const totalMealsElement = document.getElementById('totalMeals');
+        const completionRateElement = document.getElementById('completionRate');
+        const energyLevelElement = document.getElementById('energyLevel');
+        const currentDayElement = document.getElementById('currentDay');
 
+        let completedMeals = 0;
+        const totalMeals = checkboxes.length;
+
+        function updateStats() {
+            completedMeals = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const completionRate = Math.round((completedMeals / totalMeals) * 100);
+            
+            totalMealsElement.textContent = `${completedMeals}/${totalMeals}`;
+            completionRateElement.textContent = `${completionRate}%`;
+            
+            // Actualizar día actual basado en progreso
+            if (completionRate < 33) {
+                currentDayElement.textContent = '1';
+            } else if (completionRate < 66) {
+                currentDayElement.textContent = '2';
+            } else {
+                currentDayElement.textContent = '3';
+            }
+            
+            // Actualizar nivel de energía
+            let energyLevel = '';
+            const energyBars = Math.min(Math.floor(completionRate / 25) + 1, 4);
+            for (let i = 0; i < energyBars; i++) {
+                energyLevel += '⚡';
+            }
+            energyLevelElement.textContent = energyLevel;
+            
+            // Actualizar timeline
+            updateTimeline(completionRate);
+        }
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const mealItem = this.closest('.meal-item');
+                if (this.checked) {
+                    mealItem.classList.add('completed');
+                    // Efecto visual al completar
+                    mealItem.style.animation = 'pulseComplete 0.5s ease';
+                    setTimeout(() => {
+                        mealItem.style.animation = '';
+                    }, 500);
+                } else {
+                    mealItem.classList.remove('completed');
+                }
+                updateStats();
+                
+                // Guardar en localStorage
+                saveProgress();
+            });
+        });
+
+        // Timeline interactivo
+        const timelineMarkers = document.querySelectorAll('.timeline-marker');
+        const timelineContents = document.querySelectorAll('.timeline-content');
+
+        function updateTimeline(progress) {
+            timelineContents.forEach(content => content.classList.remove('active'));
+            
+            if (progress < 33) {
+                document.getElementById('timeline-day1').classList.add('active');
+            } else if (progress < 66) {
+                document.getElementById('timeline-day2').classList.add('active');
+            } else {
+                document.getElementById('timeline-day3').classList.add('active');
+            }
+            
+            // Animar barras de progreso
+            const progressBars = document.querySelectorAll('.marker-progress');
+            progressBars.forEach((bar, index) => {
+                const targetWidth = index === 0 ? 33 : index === 1 ? 66 : 100;
+                const currentWidth = Math.min(progress, targetWidth);
+                bar.style.width = `${currentWidth}%`;
+            });
+        }
+
+        timelineMarkers.forEach(marker => {
+            marker.addEventListener('click', function() {
+                const day = this.dataset.day;
+                timelineContents.forEach(content => content.classList.remove('active'));
+                document.getElementById(`timeline-day${day}`).classList.add('active');
+                
+                // Marcar como activo
+                timelineMarkers.forEach(m => m.style.opacity = '0.6');
+                this.style.opacity = '1';
+            });
+        });
+
+        // Sistema de guardado
+        function saveProgress() {
+            const progress = {};
+            checkboxes.forEach((checkbox, index) => {
+                progress[checkbox.id] = checkbox.checked;
+            });
+            localStorage.setItem('phoenixProtocolProgress', JSON.stringify(progress));
+        }
+
+        function loadProgress() {
+            const saved = localStorage.getItem('phoenixProtocolProgress');
+            if (saved) {
+                const progress = JSON.parse(saved);
+                checkboxes.forEach(checkbox => {
+                    if (progress[checkbox.id]) {
+                        checkbox.checked = true;
+                        checkbox.closest('.meal-item').classList.add('completed');
+                    }
+                });
+                updateStats();
+            }
+        }
+
+        // Efectos hover en tarjetas
+        document.querySelectorAll('.protocol-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                if (this.classList.contains('warrior-card')) {
+                    this.style.boxShadow = '0 0 80px rgba(30, 144, 255, 0.4), inset 0 0 100px rgba(30, 144, 255, 0.1)';
+                } else {
+                    this.style.boxShadow = '0 0 80px rgba(220, 20, 60, 0.4), inset 0 0 100px rgba(220, 20, 60, 0.1)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                if (this.classList.contains('warrior-card')) {
+                    this.style.boxShadow = '0 0 60px rgba(30, 144, 255, 0.3), inset 0 0 80px rgba(30, 144, 255, 0.08)';
+                } else {
+                    this.style.boxShadow = '0 0 60px rgba(220, 20, 60, 0.3), inset 0 0 80px rgba(220, 20, 60, 0.08)';
+                }
+            });
+        });
+
+        // Animación de elementos al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProgress();
+            updateStats();
+            
+            // Efecto inicial épico
+            setTimeout(() => {
+                document.querySelector('.phoenix-icon').style.animation = 'phoenixGlow 3s ease-in-out infinite';
+            }, 1000);
+        });
+
+        // Partículas simples para fondo
+        function createParticles() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.id = 'particle-canvas';
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '-1';
+            document.body.appendChild(canvas);
+
+            let particles = [];
+            const particleCount = 50;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            function createParticle() {
+                return {
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2 + 1,
+                    speedX: Math.random() * 0.5 - 0.25,
+                    speedY: Math.random() * 0.5 - 0.25,
+                    color: Math.random() > 0.5 ? 'rgba(255, 107, 53, 0.3)' : 'rgba(30, 144, 255, 0.3)'
+                };
+            }
+
+            function initParticles() {
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(createParticle());
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(particle => {
+                    particle.x += particle.speedX;
+                    particle.y += particle.speedY;
+                    
+                    if (particle.x > canvas.width) particle.x = 0;
+                    if (particle.x < 0) particle.x = canvas.width;
+                    if (particle.y > canvas.height) particle.y = 0;
+                    if (particle.y < 0) particle.y = canvas.height;
+                    
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    ctx.fillStyle = particle.color;
+                    ctx.fill();
+                });
+                
+                requestAnimationFrame(animateParticles);
+            }
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                initParticles();
+            });
+
+            resizeCanvas();
+            initParticles();
+            animateParticles();
+        }
+
+        // Iniciar partículas
+        createParticles();
+    </script>
 </body>
 </html>
