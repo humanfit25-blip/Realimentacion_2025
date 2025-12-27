@@ -105,47 +105,10 @@
                 transparent 50%);
         }
 
-        /* === CRITICAL WARNING BANNER === */
-        .warning-banner {
-            background: linear-gradient(90deg, 
-                rgba(220, 20, 60, 0.9), 
-                rgba(178, 34, 34, 0.9));
-            padding: 15px 20px;
-            text-align: center;
-            border-bottom: 3px solid var(--fire-yellow);
-            animation: pulseWarning 2s infinite;
-            margin-bottom: 20px;
-        }
-
-        @keyframes pulseWarning {
-            0%, 100% { opacity: 0.9; }
-            50% { opacity: 1; }
-        }
-
-        .warning-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .warning-icon {
-            font-size: 1.5rem;
-            animation: bounce 1s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
-        }
-
         /* === HEADER === */
         header {
             text-align: center;
-            padding: 40px 20px 30px;
+            padding: 60px 20px 40px;
             position: relative;
         }
 
@@ -155,7 +118,7 @@
         }
 
         .phoenix-icon {
-            font-size: 60px;
+            font-size: 80px;
             display: block;
             animation: phoenixGlow 3s ease-in-out infinite;
             filter: drop-shadow(0 0 30px var(--fire-orange));
@@ -174,10 +137,10 @@
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 900;
-            letter-spacing: 0.2em;
-            margin-top: 15px;
+            letter-spacing: 0.3em;
+            margin-top: 20px;
             background: linear-gradient(180deg, 
                 var(--fire-yellow) 0%, 
                 var(--fire-orange) 40%, 
@@ -196,45 +159,55 @@
 
         .subtitle {
             font-family: 'Cinzel', serif;
-            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-            letter-spacing: 0.3em;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            letter-spacing: 0.5em;
             color: var(--bone-white);
             opacity: 0.8;
-            margin-top: 10px;
+            margin-top: 15px;
             text-transform: uppercase;
         }
 
         .protocol-summary {
             max-width: 900px;
-            margin: 20px auto 0;
-            padding: 20px;
+            margin: 30px auto 0;
+            padding: 30px;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
+            border-radius: 15px;
             border-left: 4px solid var(--fire-orange);
+            border-right: 4px solid var(--warrior-blue);
         }
 
         .summary-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 15px;
+            gap: 25px;
+            margin-top: 20px;
         }
 
         .summary-item {
             text-align: center;
-            padding: 10px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .summary-item:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 0, 0, 0.4);
         }
 
         .summary-value {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--fire-yellow);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            text-shadow: 0 0 20px rgba(255, 200, 87, 0.5);
         }
 
         .summary-label {
-            font-size: 0.85rem;
-            opacity: 0.7;
+            font-size: 0.9rem;
+            opacity: 0.8;
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
@@ -244,43 +217,58 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
-            opacity: 0.6;
+            gap: 20px;
+            margin: 40px 0;
+            opacity: 0.8;
         }
 
         .rune {
-            font-size: 1.2rem;
+            font-size: 2rem;
             color: var(--fire-orange);
+            animation: runeGlow 4s infinite;
+        }
+
+        @keyframes runeGlow {
+            0%, 100% { filter: brightness(1); text-shadow: 0 0 10px var(--fire-orange); }
+            50% { filter: brightness(1.3); text-shadow: 0 0 20px var(--fire-red); }
+        }
+
+        .rune:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .rune:nth-child(3) {
+            animation-delay: 2s;
         }
 
         .divider-line {
-            height: 2px;
-            width: 80px;
-            background: linear-gradient(90deg, transparent, var(--fire-orange), transparent);
+            height: 3px;
+            width: 100px;
+            background: linear-gradient(90deg, transparent, var(--fire-orange), var(--warrior-blue), transparent);
         }
 
         /* === PROTOCOL CONTAINERS - SIDE BY SIDE === */
         .protocols-side-by-side {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
             padding: 20px;
             max-width: 1600px;
-            margin: 0 auto 50px;
+            margin: 0 auto 60px;
         }
 
         .protocol-column {
             position: relative;
             border-radius: 20px;
-            padding: 30px 25px;
+            padding: 40px 30px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             height: fit-content;
+            min-height: 800px;
         }
 
         .protocol-column:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
         }
 
         /* === WARRIOR (MALE) COLUMN === */
@@ -292,8 +280,8 @@
             border: 2px solid transparent;
             border-image: linear-gradient(180deg, var(--warrior-blue), var(--warrior-cyan), transparent) 1;
             box-shadow: 
-                0 0 40px rgba(30, 144, 255, 0.2),
-                inset 0 0 60px rgba(30, 144, 255, 0.05);
+                0 0 50px rgba(30, 144, 255, 0.25),
+                inset 0 0 80px rgba(30, 144, 255, 0.08);
         }
 
         .warrior-column::before {
@@ -302,7 +290,7 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 5px;
             background: linear-gradient(90deg, 
                 transparent, 
                 var(--warrior-cyan), 
@@ -327,24 +315,26 @@
 
         .warrior-column .column-icon {
             color: var(--warrior-cyan);
-            text-shadow: 0 0 30px var(--warrior-blue);
+            text-shadow: 0 0 40px var(--warrior-blue);
         }
 
         .warrior-column .day-header {
             background: linear-gradient(90deg, 
-                rgba(30, 144, 255, 0.2), 
+                rgba(30, 144, 255, 0.25), 
                 transparent);
-            border-left: 4px solid var(--warrior-cyan);
+            border-left: 5px solid var(--warrior-cyan);
         }
 
         .warrior-column .highlight {
             color: var(--warrior-cyan);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
         }
 
         .warrior-column .kcal-badge {
             background: linear-gradient(135deg, var(--warrior-blue), var(--warrior-cyan));
             color: var(--dark-bg);
-            font-weight: 700;
+            font-weight: 900;
+            box-shadow: 0 0 15px rgba(30, 144, 255, 0.5);
         }
 
         /* === PHOENIX (FEMALE) COLUMN === */
@@ -356,8 +346,8 @@
             border: 2px solid transparent;
             border-image: linear-gradient(180deg, var(--phoenix-red), var(--phoenix-magenta), transparent) 1;
             box-shadow: 
-                0 0 40px rgba(220, 20, 60, 0.2),
-                inset 0 0 60px rgba(220, 20, 60, 0.05);
+                0 0 50px rgba(220, 20, 60, 0.25),
+                inset 0 0 80px rgba(220, 20, 60, 0.08);
         }
 
         .phoenix-column::before {
@@ -366,7 +356,7 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 5px;
             background: linear-gradient(90deg, 
                 transparent, 
                 var(--phoenix-magenta), 
@@ -378,7 +368,7 @@
 
         @keyframes phoenixPulse {
             0%, 100% { opacity: 0.6; filter: brightness(1); }
-            50% { opacity: 1; filter: brightness(1.3); }
+            50% { opacity: 1; filter: brightness(1.5); }
         }
 
         .phoenix-column .column-title {
@@ -390,89 +380,100 @@
 
         .phoenix-column .column-icon {
             color: var(--phoenix-magenta);
-            text-shadow: 0 0 30px var(--phoenix-red);
+            text-shadow: 0 0 40px var(--phoenix-red);
         }
 
         .phoenix-column .day-header {
             background: linear-gradient(90deg, 
-                rgba(220, 20, 60, 0.2), 
+                rgba(220, 20, 60, 0.25), 
                 transparent);
-            border-left: 4px solid var(--phoenix-magenta);
+            border-left: 5px solid var(--phoenix-magenta);
         }
 
         .phoenix-column .highlight {
             color: var(--phoenix-magenta);
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
         }
 
         .phoenix-column .kcal-badge {
             background: linear-gradient(135deg, var(--phoenix-red), var(--phoenix-magenta));
             color: var(--dark-bg);
-            font-weight: 700;
+            font-weight: 900;
+            box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
         }
 
         /* === COLUMN CONTENT === */
         .column-header {
             text-align: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         }
 
         .column-icon {
-            font-size: 40px;
-            margin-bottom: 10px;
+            font-size: 60px;
+            margin-bottom: 15px;
             display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .column-title {
             font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            margin-bottom: 5px;
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            margin-bottom: 8px;
         }
 
         .column-subtitle {
-            font-size: 0.9rem;
-            opacity: 0.7;
+            font-size: 1rem;
+            opacity: 0.8;
             letter-spacing: 0.2em;
             text-transform: uppercase;
         }
 
         /* === DAY SECTIONS === */
         .day-section {
-            margin-bottom: 25px;
+            margin-bottom: 35px;
         }
 
         .day-header {
-            padding: 12px 15px;
-            margin-bottom: 12px;
-            border-radius: 8px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            backdrop-filter: blur(10px);
         }
 
         .day-title {
             font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.1em;
         }
 
         .day-focus {
-            font-size: 0.75rem;
-            opacity: 0.8;
+            font-size: 0.9rem;
+            opacity: 0.9;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-top: 3px;
+            letter-spacing: 0.1em;
+            margin-top: 5px;
         }
 
         .kcal-badge {
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
             white-space: nowrap;
+            font-weight: 700;
+            letter-spacing: 0.1em;
         }
 
         /* === MEAL ITEMS === */
@@ -483,9 +484,40 @@
         .meal-item {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            gap: 20px;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meal-item::before {
+            content: '';
+            position: absolute;
+            left: -100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            transition: left 0.5s ease;
+        }
+
+        .meal-item:hover::before {
+            left: 0;
+        }
+
+        .warrior-column .meal-item:hover::before {
+            background: linear-gradient(90deg, rgba(30, 144, 255, 0.1), transparent);
+        }
+
+        .phoenix-column .meal-item:hover::before {
+            background: linear-gradient(90deg, rgba(220, 20, 60, 0.1), transparent);
+        }
+
+        .meal-item:hover {
+            transform: translateX(10px);
+            border-bottom-color: rgba(255, 255, 255, 0.2);
         }
 
         .meal-item:last-child {
@@ -493,10 +525,11 @@
         }
 
         .meal-time {
-            font-weight: 700;
-            min-width: 45px;
+            font-weight: 900;
+            min-width: 60px;
             color: var(--fire-orange);
-            font-size: 1rem;
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
         }
 
         .meal-content {
@@ -504,224 +537,241 @@
         }
 
         .meal-food {
-            font-weight: 500;
-            margin-bottom: 3px;
+            font-weight: 700;
+            margin-bottom: 6px;
             line-height: 1.4;
+            font-size: 1.1rem;
         }
 
         .meal-detail {
-            font-size: 0.85rem;
-            opacity: 0.6;
-            line-height: 1.4;
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.5;
         }
 
         .highlight {
-            font-weight: 600;
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
         }
 
         /* === SUPPLEMENTS === */
         .supplements {
-            margin-top: 12px;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            border-left: 3px solid var(--fire-orange);
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border-left: 4px solid var(--fire-orange);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .supplements:hover {
+            transform: scale(1.02);
         }
 
         .supp-title {
-            font-weight: 700;
+            font-weight: 900;
             color: var(--fire-yellow);
-            margin-bottom: 5px;
-            font-size: 0.85rem;
-            letter-spacing: 0.08em;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .supp-list {
-            font-size: 0.85rem;
-            opacity: 0.8;
-            line-height: 1.4;
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.6;
         }
 
         /* === ELECTROLYTES BOX === */
         .electrolytes-box {
-            margin-top: 12px;
-            padding: 12px;
+            margin-top: 20px;
+            padding: 20px;
             background: linear-gradient(135deg, 
-                rgba(255, 200, 87, 0.1), 
-                rgba(255, 107, 53, 0.05));
-            border-radius: 8px;
-            border: 1px solid rgba(255, 200, 87, 0.2);
+                rgba(255, 200, 87, 0.15), 
+                rgba(255, 107, 53, 0.1));
+            border-radius: 12px;
+            border: 2px solid rgba(255, 200, 87, 0.3);
+            backdrop-filter: blur(10px);
         }
 
         .electro-title {
             color: var(--fire-yellow);
-            font-weight: 700;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-align: center;
         }
 
         .electro-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
+            gap: 15px;
             text-align: center;
         }
 
         .electro-item {
-            padding: 6px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 6px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .electro-item:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 0, 0, 0.5);
         }
 
         .electro-value {
-            font-weight: 700;
-            font-size: 1rem;
+            font-weight: 900;
+            font-size: 1.5rem;
             color: var(--fire-orange);
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
         }
 
         .electro-label {
-            font-size: 0.7rem;
-            opacity: 0.6;
+            font-size: 0.8rem;
+            opacity: 0.8;
             text-transform: uppercase;
-        }
-
-        /* === MEDICAL WARNING FOR SARAI === */
-        .medical-warning {
-            background: linear-gradient(135deg, 
-                rgba(178, 34, 34, 0.9), 
-                rgba(139, 0, 0, 0.9));
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 20px;
-            border: 2px solid var(--fire-yellow);
-            animation: warningPulse 3s infinite;
-        }
-
-        @keyframes warningPulse {
-            0%, 100% { border-color: var(--fire-yellow); }
-            50% { border-color: var(--safety-green); }
-        }
-
-        .warning-title {
-            color: var(--fire-yellow);
-            font-weight: 700;
-            margin-bottom: 8px;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .warning-list {
-            list-style: none;
-            font-size: 0.85rem;
-            opacity: 0.9;
-            line-height: 1.5;
-        }
-
-        .warning-list li {
-            margin-bottom: 5px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .warning-list li::before {
-            content: '⚠️';
-            position: absolute;
-            left: 0;
-            top: 0;
+            letter-spacing: 0.1em;
+            margin-top: 5px;
         }
 
         /* === TRAINING SECTION === */
         .training-section {
-            margin: 30px auto;
-            padding: 30px 20px;
-            max-width: 800px;
+            margin: 50px auto;
+            padding: 50px 40px;
+            max-width: 900px;
             background: linear-gradient(180deg, 
-                rgba(255, 107, 53, 0.1) 0%,
+                rgba(255, 107, 53, 0.15) 0%,
                 rgba(10, 10, 15, 0.95) 100%);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            box-shadow: 0 0 50px rgba(255, 69, 0, 0.2);
         }
 
         .training-title {
             font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
+            font-size: 2.2rem;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             background: linear-gradient(180deg, var(--fire-yellow), var(--fire-orange));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: 0.2em;
         }
 
         .training-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
         }
 
         .training-day {
-            padding: 15px;
+            padding: 25px;
             background: rgba(0, 0, 0, 0.4);
-            border-radius: 10px;
+            border-radius: 15px;
             text-align: center;
-            border: 1px solid rgba(255, 107, 53, 0.1);
-            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 107, 53, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .training-day::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .training-day:hover::before {
+            left: 100%;
         }
 
         .training-day:hover {
             border-color: var(--fire-orange);
-            transform: scale(1.03);
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
         }
 
         .training-day-num {
             font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
+            font-size: 1.8rem;
             color: var(--fire-orange);
-            font-weight: 700;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(255, 107, 53, 0.5);
         }
 
         .training-activity {
-            font-size: 0.8rem;
-            margin-top: 8px;
-            opacity: 0.8;
-            line-height: 1.4;
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.5;
         }
 
         /* === MONITORING SECTION === */
         .monitoring-section {
-            margin: 40px auto;
-            padding: 30px 20px;
-            max-width: 1000px;
+            margin: 60px auto;
+            padding: 50px 40px;
+            max-width: 1200px;
+            background: rgba(10, 10, 15, 0.8);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 107, 53, 0.2);
         }
 
         .monitoring-title {
             font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 40px;
             color: var(--fire-yellow);
+            letter-spacing: 0.2em;
+            text-shadow: 0 0 30px rgba(255, 200, 87, 0.5);
         }
 
         .monitoring-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
         .monitor-card {
-            padding: 20px;
-            background: rgba(255, 69, 0, 0.05);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 107, 53, 0.2);
+            padding: 30px;
+            background: linear-gradient(145deg, 
+                rgba(255, 69, 0, 0.1), 
+                rgba(10, 10, 20, 0.9));
+            border-radius: 15px;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .monitor-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--fire-orange);
+            box-shadow: 0 10px 30px rgba(255, 69, 0, 0.2);
         }
 
         .monitor-card h4 {
             color: var(--fire-orange);
-            margin-bottom: 12px;
-            font-size: 1rem;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
             letter-spacing: 0.1em;
+            font-weight: 700;
+            border-bottom: 2px solid rgba(255, 107, 53, 0.3);
+            padding-bottom: 10px;
         }
 
         .monitor-list {
@@ -729,77 +779,132 @@
         }
 
         .monitor-list li {
-            padding: 6px 0;
+            padding: 12px 0;
             display: flex;
             align-items: flex-start;
-            gap: 8px;
-            font-size: 0.9rem;
-            opacity: 0.85;
-            line-height: 1.4;
+            gap: 15px;
+            font-size: 1.05rem;
+            opacity: 0.9;
+            line-height: 1.5;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .monitor-list li:last-child {
+            border-bottom: none;
         }
 
         .monitor-list li::before {
             content: '⚡';
-            font-size: 0.8rem;
+            font-size: 1rem;
             flex-shrink: 0;
             margin-top: 2px;
+            color: var(--fire-yellow);
+            text-shadow: 0 0 10px rgba(255, 200, 87, 0.5);
         }
 
         /* === FOOTER === */
         footer {
             text-align: center;
-            padding: 40px 20px;
-            margin-top: 40px;
-            border-top: 1px solid rgba(255, 107, 53, 0.2);
-            background: rgba(10, 10, 15, 0.8);
+            padding: 60px 20px;
+            margin-top: 60px;
+            border-top: 2px solid rgba(255, 107, 53, 0.3);
+            background: linear-gradient(180deg, transparent, rgba(10, 10, 15, 0.9));
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--fire-orange), 
+                var(--warrior-blue), 
+                var(--fire-orange), 
+                transparent);
         }
 
         .footer-quote {
             font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
+            font-size: 1.8rem;
             color: var(--fire-orange);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             line-height: 1.4;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
         }
 
         .footer-text {
-            opacity: 0.5;
-            font-size: 0.85rem;
+            opacity: 0.7;
+            font-size: 1rem;
             max-width: 800px;
             margin: 0 auto;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .fire-emoji {
             animation: fireGlow 1s ease-in-out infinite alternate;
+            display: inline-block;
         }
 
         @keyframes fireGlow {
-            0% { filter: brightness(1); }
-            100% { filter: brightness(1.5) drop-shadow(0 0 10px var(--fire-orange)); }
+            0% { 
+                filter: brightness(1) drop-shadow(0 0 5px var(--fire-orange));
+                transform: scale(1);
+            }
+            100% { 
+                filter: brightness(1.5) drop-shadow(0 0 15px var(--fire-red));
+                transform: scale(1.1);
+            }
         }
 
         /* === RESPONSIVE === */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .protocols-side-by-side {
                 grid-template-columns: 1fr;
                 padding: 15px;
             }
             
-            .electro-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .protocol-column {
+                min-height: auto;
             }
+        }
 
-            .training-grid {
-                grid-template-columns: repeat(2, 1fr);
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+                letter-spacing: 0.2em;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
             }
             
             .protocol-summary {
-                padding: 15px;
+                padding: 20px;
             }
             
             .summary-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .training-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .monitoring-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .column-title {
+                font-size: 2rem;
             }
         }
 
@@ -808,12 +913,21 @@
                 grid-template-columns: 1fr;
             }
             
+            .training-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .electro-grid {
                 grid-template-columns: 1fr;
             }
             
-            .training-grid {
-                grid-template-columns: 1fr;
+            .meal-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .meal-time {
+                min-width: auto;
             }
         }
     </style>
@@ -825,16 +939,6 @@
     <div class="lightning"></div>
     <div class="lightning"></div>
 
-    <!-- CRITICAL WARNING BANNER -->
-    <div class="warning-banner">
-        <div class="warning-content">
-            <span class="warning-icon">⚠️</span>
-            <div>
-                <strong>ATENCIÓN HIPOTIROIDISMO:</strong> Protocolo Fénix requiere supervisión médica. Consulta endocrinólogo antes de ayunos prolongados.
-            </div>
-        </div>
-    </div>
-
     <!-- HEADER -->
     <header>
         <div class="logo-container">
@@ -844,21 +948,21 @@
         <p class="subtitle">Realimentación Post-96 Horas • Guerrero + Fénix</p>
         
         <div class="protocol-summary">
-            <div style="text-align: center; margin-bottom: 10px; opacity: 0.8;">
-                Protocolos optimizados con mejoras de seguridad y efectividad
+            <div style="text-align: center; margin-bottom: 20px; font-size: 1.2rem; opacity: 0.9;">
+                Protocolos Ancestrales Optimizados • Activación PGC-1α • Regeneración Total
             </div>
             <div class="summary-grid">
                 <div class="summary-item">
-                    <div class="summary-value">DÍAS 1-3</div>
-                    <div class="summary-label">Realimentación Progresiva</div>
+                    <div class="summary-value">96 HORAS</div>
+                    <div class="summary-label">Ayuno Prolongado Completado</div>
                 </div>
                 <div class="summary-item">
-                    <div class="summary-value">ACTIVACIÓN PGC-1α</div>
-                    <div class="summary-label">Mitocondrias + Autofagia</div>
+                    <div class="summary-value">3 DÍAS</div>
+                    <div class="summary-label">Realimentación Estratégica</div>
                 </div>
                 <div class="summary-item">
-                    <div class="summary-value">ANTIINFLAMATORIO</div>
-                    <div class="summary-label">Microbiota + Tiroides</div>
+                    <div class="summary-value">MITOCONDRIAS</div>
+                    <div class="summary-label">Biogénesis Activada</div>
                 </div>
             </div>
         </div>
@@ -881,7 +985,7 @@
             <div class="column-header">
                 <span class="column-icon">⚔️</span>
                 <h2 class="column-title">GUERRERO</h2>
-                <p class="column-subtitle">40 años • CrossFit • ~2000kcal</p>
+                <p class="column-subtitle">40 años • CrossFit • ~2000kcal Progresivo</p>
             </div>
 
             <!-- DÍA 1 -->
@@ -889,41 +993,41 @@
                 <div class="day-header">
                     <div>
                         <h3 class="day-title">DÍA 1</h3>
-                        <span class="day-focus">Reparación Mucosa</span>
+                        <span class="day-focus">Recuperación Mitocondrial</span>
                     </div>
-                    <span class="kcal-badge">1000 kcal</span>
+                    <span class="kcal-badge">1000 KCAL</span>
                 </div>
                 <ul class="meal-list">
                     <li class="meal-item">
                         <span class="meal-time">8h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Caldo huesos (500ml)</div>
-                            <div class="meal-detail">+ 1.5g sal marina + 200mg Mg</div>
+                            <div class="meal-food">Caldo de Huesos (500ml)</div>
+                            <div class="meal-detail">+ 1.5g sal marina + 200mg magnesio</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">10h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Caldo huesos (300ml)</div>
+                            <div class="meal-food">Caldo de Huesos (300ml)</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">12h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Caldo huesos (300ml)</div>
+                            <div class="meal-food">Caldo de Huesos (300ml)</div>
                             <div class="meal-detail">+ ¼ aguacate batido</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">14h</span>
                         <div class="meal-content">
-                            <div class="meal-food">🚶 Caminata ligera 30 min</div>
-                            <div class="meal-detail">+ movilidad 5 min</div>
+                            <div class="meal-food">🚶 Caminata Ligera 30min</div>
+                            <div class="meal-detail">+ 5min movilidad articular</div>
                         </div>
                     </li>
                 </ul>
                 <div class="electrolytes-box">
-                    <div class="electro-title">⚡ ELECTROLITOS TOTALES</div>
+                    <div class="electro-title">⚡ ELECTROLITOS TOTALES DÍA 1</div>
                     <div class="electro-grid">
                         <div class="electro-item">
                             <div class="electro-value">5g</div>
@@ -946,49 +1050,49 @@
                 <div class="day-header">
                     <div>
                         <h3 class="day-title">DÍA 2</h3>
-                        <span class="day-focus">Activación Gentil</span>
+                        <span class="day-focus">Activación PGC-1α</span>
                     </div>
-                    <span class="kcal-badge">1500 kcal</span>
+                    <span class="kcal-badge">1500 KCAL</span>
                 </div>
                 <ul class="meal-list">
                     <li class="meal-item">
                         <span class="meal-time">8h</span>
                         <div class="meal-content">
-                            <div class="meal-food">3 huevos + champiñones</div>
-                            <div class="meal-detail">+ aceite de oliva</div>
+                            <div class="meal-food">3 Huevos + Champiñones</div>
+                            <div class="meal-detail">Salteados en aceite de oliva virgen extra</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">10h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Caldo huesos + 4 nueces Brasil</div>
-                            <div class="meal-detail"><span class="highlight">Selenio natural</span></div>
+                            <div class="meal-food">Caldo de Huesos + 4 Nueces Brasil</div>
+                            <div class="meal-detail"><span class="highlight">Selenio natural máximo</span></div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">12h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Pollo 150g + calabacín</div>
-                            <div class="meal-detail">+ ½ aguacate</div>
+                            <div class="meal-food">Pechuga Pollo 150g + Calabacín</div>
+                            <div class="meal-detail">+ ½ aguacate completo</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">14h</span>
                         <div class="meal-content">
-                            <div class="meal-food">🏋️ Movilidad + Caminata</div>
-                            <div class="meal-detail">30 min cargada (25% RM)</div>
+                            <div class="meal-food">🏋️ Movilidad + Caminata Cargada</div>
+                            <div class="meal-detail">30min • 25% RM • Activación neuronal</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">16h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Caldo + atún + pepino</div>
+                            <div class="meal-food">Caldo + Atún Natural + Pepino</div>
                         </div>
                     </li>
                 </ul>
                 <div class="supplements">
-                    <div class="supp-title">💊 SUPLEMENTOS DÍA 2-3</div>
-                    <div class="supp-list">SOLO electrolitos • Selenio+Zinc a partir D4</div>
+                    <div class="supp-title">💊 SUPLEMENTACIÓN ESTRATÉGICA</div>
+                    <div class="supp-list">Solo electrolitos Días 1-3 • Selenio+Zinc a partir Día 4 • CoQ10 Día 6+</div>
                 </div>
             </section>
 
@@ -997,68 +1101,60 @@
                 <div class="day-header">
                     <div>
                         <h3 class="day-title">DÍA 3</h3>
-                        <span class="day-focus">Consolidación</span>
+                        <span class="day-focus">Mitocondrias al Máximo</span>
                     </div>
-                    <span class="kcal-badge">2000 kcal</span>
+                    <span class="kcal-badge">2000 KCAL</span>
                 </div>
                 <ul class="meal-list">
                     <li class="meal-item">
                         <span class="meal-time">8h</span>
                         <div class="meal-content">
-                            <div class="meal-food">3 huevos + calabacín</div>
-                            <div class="meal-detail">+ 1 cdta. aceite MCT</div>
+                            <div class="meal-food">3 Huevos + Calabacín</div>
+                            <div class="meal-detail">+ 1 cucharada aceite MCT</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">10h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Manzana verde + 8 nueces Brasil</div>
+                            <div class="meal-food">Manzana Verde + 8 Nueces Brasil</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">12h</span>
                         <div class="meal-content">
                             <div class="meal-food">Salmón 200g</div>
-                            <div class="meal-detail">+ ½ batata pequeña</div>
+                            <div class="meal-detail">+ ½ batata pequeña asada</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">14h</span>
                         <div class="meal-content">
-                            <div class="meal-food">🔥 Fuerza Neuronal</div>
-                            <div class="meal-detail">4x8 (70% RM) + movilidad</div>
+                            <div class="meal-food">🔥 Fuerza Neuronal 4x8</div>
+                            <div class="meal-detail">70% 1RM + Movilidad articular</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">16h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Cordero 200g</div>
-                            <div class="meal-detail">+ calabaza asada</div>
+                            <div class="meal-food">Chuletas Cordero 200g</div>
+                            <div class="meal-detail">+ Calabaza asada en rodajas</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">18h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Caldo + langostinos + espárragos</div>
+                            <div class="meal-food">Caldo + Langostinos + Espárragos</div>
                         </div>
                     </li>
                 </ul>
                 <div class="supplements">
-                    <div class="supp-title">🚫 NO SUPLEMENTOS DÍA 1-3</div>
-                    <div class="supp-list">Evitar CoQ10, Complejo B hasta Día 4+</div>
+                    <div class="supp-title">⚡ ENTRENAMIENTO GUERRERO</div>
+                    <div class="supp-list">
+                        <strong>Día 4:</strong> CrossFit 80% intensidad • Sin PRs<br>
+                        <strong>Día 5+:</strong> Entrenamiento regular • PRs Días 10-14
+                    </div>
                 </div>
             </section>
-            
-            <!-- NOTA GUERRERO -->
-            <div class="supplements" style="border-left-color: var(--warrior-cyan); margin-top: 20px;">
-                <div class="supp-title" style="color: var(--warrior-cyan);">🏆 ENTRENAMIENTO GUERRERO</div>
-                <div class="supp-list">
-                    <strong>Día 2:</strong> Movilidad + caminata cargada<br>
-                    <strong>Día 3:</strong> Fuerza Neuronal (70% RM)<br>
-                    <strong>Día 4+:</strong> CrossFit moderado (80% intensidad)<br>
-                    <strong>PRs esperados:</strong> Día 10-14 (supercompensación)
-                </div>
-            </div>
         </div>
 
         <!-- COLUMNA FÉNIX (FEMENINO) -->
@@ -1066,15 +1162,15 @@
             <div class="column-header">
                 <span class="column-icon">🦅</span>
                 <h2 class="column-title">FÉNIX</h2>
-                <p class="column-subtitle">Sarai • Hashimoto • ~1600kcal</p>
+                <p class="column-subtitle">Sarai • Protocolo Antiinflamatorio • ~1600kcal</p>
             </div>
 
             <!-- RECORDATORIO EUTIROX -->
-            <div class="supplements" style="margin-bottom: 20px; border-left-color: var(--phoenix-magenta); background: rgba(220, 20, 60, 0.1);">
-                <div class="supp-title" style="color: var(--phoenix-magenta);">⏰ IMPORTANTE - TODOS LOS DÍAS</div>
+            <div class="supplements" style="margin-bottom: 25px; border-left-color: var(--phoenix-magenta); background: linear-gradient(90deg, rgba(220, 20, 60, 0.15), transparent);">
+                <div class="supp-title" style="color: var(--phoenix-magenta);">⏰ HORARIO MEDICACIÓN</div>
                 <div class="supp-list">
-                    <strong>6:30h:</strong> EUTIROX 150mg en ayunas<br>
-                    <strong>Esperar 60 minutos</strong> antes de primera ingesta
+                    <strong>6:30h:</strong> Eutirox 150mg en ayunas<br>
+                    <strong>Esperar 60 minutos exactos</strong> antes de primera ingesta
                 </div>
             </div>
 
@@ -1083,41 +1179,41 @@
                 <div class="day-header">
                     <div>
                         <h3 class="day-title">DÍA 1</h3>
-                        <span class="day-focus">Electrolitos + Mucosa</span>
+                        <span class="day-focus">Electrolitos + Mucosa Intestinal</span>
                     </div>
-                    <span class="kcal-badge">800 kcal</span>
+                    <span class="kcal-badge">800 KCAL</span>
                 </div>
                 <ul class="meal-list">
                     <li class="meal-item">
                         <span class="meal-time">8h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Caldo huesos (400ml)</div>
-                            <div class="meal-detail">+ 1g sal marina + 200mg Mg</div>
+                            <div class="meal-food">Caldo de Huesos (400ml)</div>
+                            <div class="meal-detail">+ 1g sal marina + 200mg magnesio</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">10h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Caldo huesos (300ml)</div>
+                            <div class="meal-food">Caldo de Huesos (300ml)</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">12h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Caldo huesos (300ml)</div>
+                            <div class="meal-food">Caldo de Huesos (300ml)</div>
                             <div class="meal-detail">+ ¼ aguacate batido</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">14h</span>
                         <div class="meal-content">
-                            <div class="meal-food">🚶 Caminata suave 20 min</div>
-                            <div class="meal-detail">+ respiraciones</div>
+                            <div class="meal-food">🚶 Caminata Suave 20min</div>
+                            <div class="meal-detail">+ Respiración diafragmática</div>
                         </div>
                     </li>
                 </ul>
                 <div class="electrolytes-box">
-                    <div class="electro-title">⚡ ELECTROLITOS TOTALES</div>
+                    <div class="electro-title">⚡ ELECTROLITOS TOTALES DÍA 1</div>
                     <div class="electro-grid">
                         <div class="electro-item">
                             <div class="electro-value">4g</div>
@@ -1140,56 +1236,57 @@
                 <div class="day-header">
                     <div>
                         <h3 class="day-title">DÍA 2</h3>
-                        <span class="day-focus">Prebióticos Gentiles</span>
+                        <span class="day-focus">Prebióticos + Microbiota</span>
                     </div>
-                    <span class="kcal-badge">1200 kcal</span>
+                    <span class="kcal-badge">1200 KCAL</span>
                 </div>
                 <ul class="meal-list">
                     <li class="meal-item">
                         <span class="meal-time">8h</span>
                         <div class="meal-content">
-                            <div class="meal-food">2 huevos cocidos + champiñones</div>
+                            <div class="meal-food">2 Huevos Cocidos + Champiñones</div>
+                            <div class="meal-detail">Salteado suave sin lácteos</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">10h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Caldo + 3 nueces de Brasil</div>
-                            <div class="meal-detail"><span class="highlight">Selenio tiroides</span></div>
+                            <div class="meal-food">Caldo + 3 Nueces de Brasil</div>
+                            <div class="meal-detail"><span class="highlight">Selenio tiroideo máximo</span></div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">12h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Pollo 150g + calabacín</div>
-                            <div class="meal-detail">+ ½ aguacate</div>
+                            <div class="meal-food">Pollo Plancha 150g + Calabacín</div>
+                            <div class="meal-detail">+ ½ aguacate Hass</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">14h</span>
                         <div class="meal-content">
-                            <div class="meal-food">🚶 Caminata enérgica 30 min</div>
-                            <div class="meal-detail">+ yoga suave</div>
+                            <div class="meal-food">🚶 Caminata Enérgica 30min</div>
+                            <div class="meal-detail">+ Yoga suave + Estiramientos</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">16h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Caldo + pepino + aceitunas</div>
+                            <div class="meal-food">Caldo + Pepino + Aceitunas</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">18h</span>
                         <div class="meal-content">
-                            <div class="meal-food">5g Glutamina en caldo</div>
-                            <div class="meal-detail"><span class="highlight">Reparación intestinal</span></div>
+                            <div class="meal-food">5g Glutamina en Caldo</div>
+                            <div class="meal-detail"><span class="highlight">Reparación intestinal selectiva</span></div>
                         </div>
                     </li>
                 </ul>
                 <div class="supplements">
-                    <div class="supp-title">💊 SUPLEMENTOS SEGUROS</div>
+                    <div class="supp-title">💊 SUPLEMENTACIÓN ESPECÍFICA</div>
                     <div class="supp-list">
-                        <strong>Electrolitos</strong> + <strong>Glutamina</strong><br>
+                        Electrolitos + Glutamina Días 1-3<br>
                         Selenio + Myo-inositol a partir Día 4
                     </div>
                 </div>
@@ -1200,123 +1297,109 @@
                 <div class="day-header">
                     <div>
                         <h3 class="day-title">DÍA 3</h3>
-                        <span class="day-focus">Antiinflamatorio</span>
+                        <span class="day-focus">Antiinflamatorio Máximo</span>
                     </div>
-                    <span class="kcal-badge">1600 kcal</span>
+                    <span class="kcal-badge">1600 KCAL</span>
                 </div>
                 <ul class="meal-list">
                     <li class="meal-item">
                         <span class="meal-time">8h</span>
                         <div class="meal-content">
-                            <div class="meal-food">2 huevos + calabacín</div>
-                            <div class="meal-detail">+ aceite de oliva</div>
+                            <div class="meal-food">2 Huevos + Calabacín</div>
+                            <div class="meal-detail">Salteado en aceite de oliva virgen</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">10h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Manzana verde + 4 nueces Brasil</div>
+                            <div class="meal-food">Manzana Verde + 4 Nueces Brasil</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">12h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Pescado blanco 150g</div>
-                            <div class="meal-detail">+ calabaza asada</div>
+                            <div class="meal-food">Pescado Blanco 150g</div>
+                            <div class="meal-detail">+ Calabaza asada al horno</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">14h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Hummus + crudités</div>
-                            <div class="meal-detail">Pepino + zanahoria</div>
+                            <div class="meal-food">Hummus + Crudités</div>
+                            <div class="meal-detail">Pepino + Zanahoria + Apio</div>
                         </div>
                     </li>
                     <li class="meal-item">
                         <span class="meal-time">16h</span>
                         <div class="meal-content">
-                            <div class="meal-food">Cordero 150g</div>
-                            <div class="meal-detail">+ brócoli al vapor</div>
+                            <div class="meal-food">Chuletas Cordero 150g</div>
+                            <div class="meal-detail">+ Brócoli al vapor con ajo</div>
                         </div>
                     </li>
                 </ul>
                 <div class="supplements">
                     <div class="supp-title">🌿 ANTIINFLAMATORIOS NATURALES</div>
                     <div class="supp-list">
-                        1g Cúrcuma + pimienta negra<br>
-                        <strong>EVITAR LÁCTEOS</strong> hasta Día 7+ (si tolerancia)
+                        1g Cúrcuma + Pimienta negra (biodisponibilidad)<br>
+                        Protocolo sin lácteos • Sin gluten • Sin procesados
                     </div>
                 </div>
             </section>
-            
-            <!-- ADVERTENCIA MÉDICA CRÍTICA -->
-            <div class="medical-warning">
-                <div class="warning-title">
-                    <span>⚠️</span> ADVERTENCIA MÉDICA PARA SARAI
-                </div>
-                <ul class="warning-list">
-                    <li>Este protocolo es un <strong>experimento único supervisado</strong></li>
-                    <li>Consultar endocrinólogo antes de nuevos ayunos</li>
-                    <li><strong>EVITAR LÁCTEOS</strong> completamente hasta Día 7+</li>
-                    <li>Cualquier signo de inflamación: detener protocolo</li>
-                    <li>Laboratorio Día 7: TSH, T3, T4, PCR, Ferritina, Vitamina D</li>
-                </ul>
-            </div>
         </div>
     </div>
 
     <!-- TRAINING SECTION -->
     <section class="training-section">
-        <h3 class="training-title">⚔️ ENTRENAMIENTO PGC-1α • GUERRERO</h3>
+        <h3 class="training-title">⚔️ ACTIVACIÓN PGC-1α • ENTRENAMIENTO GUERRERO</h3>
         <div class="training-grid">
             <div class="training-day">
                 <div class="training-day-num">DÍA 2</div>
-                <div class="training-activity">Movilidad<br>+ KB ligeros<br>30 min</div>
+                <div class="training-activity">Movilidad Articular<br>+ Kettlebells Ligeros<br>30min Activación</div>
             </div>
             <div class="training-day">
                 <div class="training-day-num">DÍA 3</div>
-                <div class="training-activity">Fuerza 4x8<br>(70% 1RM)<br>+ movilidad</div>
+                <div class="training-activity">Fuerza Neuronal 4x8<br>70% 1RM<br>+ Movilidad Completa</div>
             </div>
             <div class="training-day">
                 <div class="training-day-num">DÍA 4</div>
-                <div class="training-activity">CrossFit<br>80% intensidad<br>sin PRs</div>
+                <div class="training-activity">CrossFit 80%<br>Sin PRs<br>Recuperación Activa</div>
             </div>
             <div class="training-day">
                 <div class="training-day-num">DÍA 5+</div>
-                <div class="training-activity">Entrenamiento<br>regular<br>PRs D10-14</div>
+                <div class="training-activity">Entrenamiento Regular<br>PRs Días 10-14<br>Supercompensación</div>
             </div>
         </div>
     </section>
 
     <!-- MONITORING SECTION -->
     <section class="monitoring-section">
-        <h3 class="monitoring-title">⚡ MONITOREO CRÍTICO • DÍAS 1-7</h3>
+        <h3 class="monitoring-title">⚡ MONITOREO DE ALTO RENDIMIENTO</h3>
         <div class="monitoring-grid">
             <div class="monitor-card">
-                <h4>MÉTRICAS DIARIAS</h4>
+                <h4>MÉTRICAS DIARIAS CLAVE</h4>
                 <ul class="monitor-list">
-                    <li>Pulso cada 4h (60-90 lpm normal)</li>
-                    <li>Glucosa si mareo (&lt;70 = caldo)</li>
-                    <li>Peso: estabilizar o subir 0.5-1kg D1→D3</li>
-                    <li>Hinchazón/diarrea = reducir volumen</li>
+                    <li>Pulso cada 4h (60-90 lpm óptimo)</li>
+                    <li>Glucosa capilar si mareo (&lt;70 = caldo inmediato)</li>
+                    <li>Peso matutino: estabilizar o +0.5-1kg D1→D3</li>
+                    <li>Síntomas digestivos: ajustar volumen/complejidad</li>
                 </ul>
             </div>
             <div class="monitor-card">
-                <h4>LABORATORIO DÍA 7</h4>
+                <h4>BENEFICIOS ESPERADOS</h4>
                 <ul class="monitor-list">
-                    <li>TSH / T3L / T4L (Hashimoto)</li>
-                    <li>PCR (inflamación)</li>
-                    <li>Ferritina + Vitamina D</li>
-                    <li>Electrolitos + glucosa</li>
+                    <li>Día 1-2: Energía estable + Electrolitos óptimos</li>
+                    <li>Día 3: Pico afterglow + Claridad mental máxima</li>
+                    <li>Día 4-7: Microbiota recolonizada + Inflamación ↓</li>
+                    <li>Día 10-14: PRs CrossFit + Sensibilidad insulina ↑</li>
                 </ul>
             </div>
             <div class="monitor-card">
-                <h4>SEÑALES DE ALARMA (SARAI)</h4>
+                <h4>OPTIMIZACIÓN AVANZADA</h4>
                 <ul class="monitor-list">
-                    <li>Dolor articular / hinchazón</li>
-                    <li>Niebla mental persistente</li>
-                    <li>Fatiga extrema no mejoría</li>
-                    <li>Cualquier signo inflamación</li>
+                    <li>Suplementación escalonada Día 4+</li>
+                    <li>Reintroducción lácteos Día 7+ (solo si tolerancia)</li>
+                    <li>Laboratorio Día 7: TSH, T3, T4, PCR, Ferritina</li>
+                    <li>Entrenamiento progresivo sin sobrecarga</li>
                 </ul>
             </div>
         </div>
@@ -1325,55 +1408,90 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-quote">
-            "No ayunamos para morir. Ayunamos para renacer de nuestras cenizas." 
+            "Del ayuno prolongado renace el guerrero; de las cenizas metabólicas, el fénix se alza con mitocondrias nuevas." 
             <span class="fire-emoji">🔥</span>
         </div>
         <p class="footer-text">
-            Protocolo Fénix v2.0 • Integra mejoras de seguridad y efectividad • 
-            CrossFit Vallecas • Asmil & Sarai • Diciembre 2024<br>
-            <em>Los protocolos médicos deben ser supervisados por profesionales. 
-            Este documento es una guía educativa basada en evidencia científica.</em>
+            Protocolo Fénix v3.0 • Diseño Ancestral Mejorado • CrossFit Vallecas<br>
+            Asmil & Sarai • Experimento de Alto Rendimiento Humano • Diciembre 2024
         </p>
     </footer>
 
     <!-- STARS GENERATION -->
     <script>
-        // Generate stars
+        // Generate dynamic stars
         const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 80; i++) {
+        for (let i = 0; i < 120; i++) {
             const star = document.createElement('div');
             star.className = 'star';
             star.style.left = Math.random() * 100 + '%';
             star.style.top = Math.random() * 100 + '%';
-            star.style.width = Math.random() * 3 + 1 + 'px';
-            star.style.height = star.style.width;
-            star.style.animationDelay = Math.random() * 3 + 's';
-            star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            
+            const size = Math.random() * 4 + 1;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            
+            star.style.animationDelay = Math.random() * 5 + 's';
+            star.style.animationDuration = (Math.random() * 4 + 2) + 's';
+            
+            // Random brightness
+            star.style.opacity = Math.random() * 0.8 + 0.2;
+            
             starsContainer.appendChild(star);
         }
 
-        // Interactive meal items
-        document.querySelectorAll('.meal-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+        // Interactive protocol columns
+        document.querySelectorAll('.protocol-column').forEach(column => {
+            column.addEventListener('mouseenter', function() {
+                if (this.classList.contains('warrior-column')) {
+                    this.style.boxShadow = '0 0 80px rgba(30, 144, 255, 0.4), inset 0 0 100px rgba(30, 144, 255, 0.1)';
+                } else {
+                    this.style.boxShadow = '0 0 80px rgba(220, 20, 60, 0.4), inset 0 0 100px rgba(220, 20, 60, 0.1)';
+                }
             });
-            item.addEventListener('mouseleave', function() {
-                this.style.backgroundColor = 'transparent';
+            
+            column.addEventListener('mouseleave', function() {
+                if (this.classList.contains('warrior-column')) {
+                    this.style.boxShadow = '0 0 50px rgba(30, 144, 255, 0.25), inset 0 0 80px rgba(30, 144, 255, 0.08)';
+                } else {
+                    this.style.boxShadow = '0 0 50px rgba(220, 20, 60, 0.25), inset 0 0 80px rgba(220, 20, 60, 0.08)';
+                }
             });
         });
 
-        // Protocol column hover effects
-        document.querySelectorAll('.protocol-column').forEach(column => {
-            column.addEventListener('mouseenter', function() {
-                this.style.boxShadow = this.classList.contains('warrior-column') 
-                    ? '0 0 60px rgba(30, 144, 255, 0.3), inset 0 0 80px rgba(30, 144, 255, 0.08)'
-                    : '0 0 60px rgba(220, 20, 60, 0.3), inset 0 0 80px rgba(220, 20, 60, 0.08)';
+        // Meal item hover effects
+        document.querySelectorAll('.meal-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                const timeElement = this.querySelector('.meal-time');
+                timeElement.style.transform = 'scale(1.2)';
+                timeElement.style.transition = 'transform 0.3s ease';
             });
-            column.addEventListener('mouseleave', function() {
-                this.style.boxShadow = this.classList.contains('warrior-column')
-                    ? '0 0 40px rgba(30, 144, 255, 0.2), inset 0 0 60px rgba(30, 144, 255, 0.05)'
-                    : '0 0 40px rgba(220, 20, 60, 0.2), inset 0 0 60px rgba(220, 20, 60, 0.05)';
+            
+            item.addEventListener('mouseleave', function() {
+                const timeElement = this.querySelector('.meal-time');
+                timeElement.style.transform = 'scale(1)';
             });
+        });
+
+        // Animate summary items on scroll
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'none';
+                    setTimeout(() => {
+                        entry.target.style.animation = '';
+                    }, 10);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.summary-item, .training-day, .monitor-card').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
