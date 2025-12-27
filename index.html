@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolos Ancestrales Post-Ayuno</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #ff4d00;
+            --color-secondary: #ffcc00;
+            --color-accent: #ff3300;
+            --color-male: #0066cc;
+            --color-female: #cc0033;
+            --color-dark: #0a0a16;
+            --color-darker: #050510;
+            --color-text: #f0f0f0;
+            --color-text-light: #cccccc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-darker);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 77, 0, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 204, 0, 0.05) 0%, transparent 20%);
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Efectos de fondo - relámpagos espaciales */
+        #lightning-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .lightning {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--color-secondary), transparent);
+            opacity: 0;
+            animation: lightningFlash 8s infinite;
+        }
+        
+        .lightning:nth-child(1) {
+            left: 20%;
+            animation-delay: 1s;
+        }
+        
+        .lightning:nth-child(2) {
+            left: 45%;
+            animation-delay: 3.5s;
+            width: 1px;
+        }
+        
+        .lightning:nth-child(3) {
+            left: 70%;
+            animation-delay: 6s;
+            height: 80%;
+        }
+        
+        .lightning:nth-child(4) {
+            left: 85%;
+            animation-delay: 4s;
+            width: 1px;
+        }
+        
+        @keyframes lightningFlash {
+            0%, 95%, 100% {
+                opacity: 0;
+                box-shadow: 0 0 5px var(--color-secondary);
+            }
+            96%, 97%, 98% {
+                opacity: 0.8;
+                box-shadow: 0 0 20px var(--color-secondary), 0 0 40px var(--color-accent);
+            }
+        }
+        
+        /* Estrellas de fondo */
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Cabecera */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .title-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary), var(--color-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(255, 77, 0, 0.3);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--color-text-light);
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Tarjetas de protocolos */
+        .protocols-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+        
+        .protocol-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 550px;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .protocol-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .protocol-card.male {
+            background: linear-gradient(145deg, rgba(0, 30, 60, 0.9), rgba(0, 60, 100, 0.8));
+            border-left: 5px solid var(--color-male);
+        }
+        
+        .protocol-card.female {
+            background: linear-gradient(145deg, rgba(60, 0, 20, 0.9), rgba(100, 0, 30, 0.8));
+            border-left: 5px solid var(--color-female);
+        }
+        
+        .protocol-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .protocol-icon {
+            font-size: 2.5rem;
+            margin-right: 15px;
+        }
+        
+        .male .protocol-icon {
+            color: var(--color-male);
+            text-shadow: 0 0 15px var(--color-male);
+        }
+        
+        .female .protocol-icon {
+            color: var(--color-female);
+            text-shadow: 0 0 15px var(--color-female);
+        }
+        
+        .protocol-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .male .protocol-title {
+            background: linear-gradient(to right, var(--color-male), #00ccff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .female .protocol-title {
+            background: linear-gradient(to right, var(--color-female), #ff6666);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Días del protocolo */
+        .day-container {
+            margin-bottom: 25px;
+        }
+        
+        .day-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+        }
+        
+        .male .day-title {
+            color: #66b3ff;
+        }
+        
+        .female .day-title {
+            color: #ff6680;
+        }
+        
+        .day-title i {
+            margin-right: 10px;
+        }
+        
+        .meal-list {
+            list-style-type: none;
+        }
+        
+        .meal-item {
+            display: flex;
+            margin-bottom: 8px;
+            padding: 8px 10px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            transition: all 0.2s;
+        }
+        
+        .meal-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
+        }
+        
+        .meal-time {
+            font-weight: bold;
+            min-width: 50px;
+            margin-right: 15px;
+        }
+        
+        .male .meal-time {
+            color: #66b3ff;
+        }
+        
+        .female .meal-time {
+            color: #ff6680;
+        }
+        
+        .meal-content {
+            flex: 1;
+        }
+        
+        /* Tabla de monitoreo */
+        .monitoring-section {
+            background: rgba(10, 15, 30, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-top: 3px solid var(--color-secondary);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: var(--color-secondary);
+            text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--color-secondary), transparent);
+        }
+        
+        .monitoring-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .monitoring-table th {
+            background-color: rgba(255, 77, 0, 0.2);
+            color: var(--color-secondary);
+            padding: 15px;
+            text-align: left;
+            border-bottom: 2px solid var(--color-primary);
+        }
+        
+        .monitoring-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .monitoring-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+        
+        .monitoring-table tr:hover {
+            background-color: rgba(255, 77, 0, 0.1);
+        }
+        
+        .metric {
+            font-weight: bold;
+            color: var(--color-text-light);
+        }
+        
+        .action {
+            color: #ffcc99;
+        }
+        
+        /* Nota importante */
+        .important-note {
+            background: linear-gradient(145deg, rgba(100, 0, 0, 0.8), rgba(60, 0, 0, 0.9));
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 40px;
+            border-left: 5px solid var(--color-accent);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.2);
+        }
+        
+        .note-title {
+            color: #ff9999;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .note-title i {
+            margin-right: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            color: var(--color-text-light);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        .rune-decoration {
+            font-size: 2rem;
+            letter-spacing: 10px;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .protocols-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .protocol-card {
+                min-width: 100%;
+            }
+            
+            .monitoring-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efectos de fondo -->
+    <div id="lightning-container">
+        <div class="lightning"></div>
+        <div class="lightning"></div>
+        <div class="lightning"></div>
+        <div class="lightning"></div>
+    </div>
+    
+    <div class="container">
+        <!-- Cabecera -->
+        <header>
+            <div class="title-container">
+                <h1><i class="fas fa-fire"></i> PROTOCOLOS ANCESTRALES</h1>
+                <div class="subtitle">
+                    Guía de realimentación post-ayuno de 96h. Diseñada para activar PGC-1α, regeneración mitocondrial y recolonización de microbiota.
+                </div>
+            </div>
+        </header>
+        
+        <!-- Protocolos -->
+        <div class="protocols-container">
+            <!-- Protocolo Masculino -->
+            <div class="protocol-card male">
+                <div class="protocol-header">
+                    <div class="protocol-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <div class="protocol-title">PROTOCOLO VARÓN (40A, CrossFit)</div>
+                        <div class="subtitle">~2000kcal progresivo + activación PGC-1α</div>
+                    </div>
+                </div>
+                
+                <div class="day-container">
+                    <div class="day-title"><i class="fas fa-sun"></i> DÍA 1 - Recuperación Mitocondrial</div>
+                    <ul class="meal-list">
+                        <li class="meal-item"><span class="meal-time">8h</span><span class="meal-content">Caldo huesos (500ml) + 1.5g sal marina + 200mg Mg</span></li>
+                        <li class="meal-item"><span class="meal-time">10h</span><span class="meal-content">Caldo huesos (300ml)</span></li>
+                        <li class="meal-item"><span class="meal-time">12h</span><span class="meal-content">Caldo huesos (300ml) + 1/4 aguacate batido</span></li>
+                        <li class="meal-item"><span class="meal-time">14h</span><span class="meal-content">Caminata ligera 30 min + movilidad 5 min</span></li>
+                    </ul>
+                </div>
+                
+                <div class="day-container">
+                    <div class="day-title"><i class="fas fa-bolt"></i> DÍA 2 - Activación PGC-1α</div>
+                    <ul class="meal-list">
+                        <li class="meal-item"><span class="meal-time">8h</span><span class="meal-content">3 huevos + champiñones + AOVE</span></li>
+                        <li class="meal-item"><span class="meal-time">10h</span><span class="meal-content">Caldo huesos + 4 nueces Brasil</span></li>
+                        <li class="meal-item"><span class="meal-time">12h</span><span class="meal-content">Pollo 150g + calabacín + 1/2 aguacate</span></li>
+                        <li class="meal-item"><span class="meal-time">14h</span><span class="meal-content">Movilidad + Caminata 30 min cargada (25% RM)</span></li>
+                        <li class="meal-item"><span class="meal-time">16h</span><span class="meal-content">Caldo + atún + pepino</span></li>
+                    </ul>
+                </div>
+                
+                <div class="day-container">
+                    <div class="day-title"><i class="fas fa-mountain"></i> DÍA 3 - Mitocondrias Máximas</div>
+                    <ul class="meal-list">
+                        <li class="meal-item"><span class="meal-time">8h</span><span class="meal-content">3 huevos + calabacín + 1 cdta. aceite MCT</span></li>
+                        <li class="meal-item"><span class="meal-time">10h</span><span class="meal-content">Manzana verde + 8 nueces Brasil</span></li>
+                        <li class="meal-item"><span class="meal-time">12h</span><span class="meal-content">Salmón 200g + 1/2 batata pequeña</span></li>
+                        <li class="meal-item"><span class="meal-time">14h</span><span class="meal-content">Fuerza Neuronal: 4x8 (70% RM) + movilidad</span></li>
+                        <li class="meal-item"><span class="meal-time">16h</span><span class="meal-content">Cordero 200g + calabaza asada</span></li>
+                        <li class="meal-item"><span class="meal-time">18h</span><span class="meal-content">Caldo + langostinos + espárragos</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Protocolo Femenino -->
+            <div class="protocol-card female">
+                <div class="protocol-header">
+                    <div class="protocol-icon">
+                        <i class="fas fa-fire-alt"></i>
+                    </div>
+                    <div>
+                        <div class="protocol-title">PROTOCOLO MUJER (Sarai - Fénix Oscuro)</div>
+                        <div class="subtitle">~1600kcal progresivo + antiinflamatorio + microbiota</div>
+                    </div>
+                </div>
+                
+                <div class="day-container">
+                    <div class="day-title"><i class="fas fa-feather-alt"></i> DÍA 1 - Electrolitos + Mucosa</div>
+                    <ul class="meal-list">
+                        <li class="meal-item"><span class="meal-time">8h</span><span class="meal-content">Caldo huesos (400ml) + 1g sal marina + 200mg Mg</span></li>
+                        <li class="meal-item"><span class="meal-time">10h</span><span class="meal-content">Caldo huesos (300ml)</span></li>
+                        <li class="meal-item"><span class="meal-time">12h</span><span class="meal-content">Caldo huesos (300ml) + 1/4 aguacate batido</span></li>
+                        <li class="meal-item"><span class="meal-time">14h</span><span class="meal-content">Caminata suave 20 min + respiraciones</span></li>
+                    </ul>
+                </div>
+                
+                <div class="day-container">
+                    <div class="day-title"><i class="fas fa-seedling"></i> DÍA 2 - Prebióticos Gentiles</div>
+                    <ul class="meal-list">
+                        <li class="meal-item"><span class="meal-time">8h</span><span class="meal-content">2 huevos cocidos + champiñones</span></li>
+                        <li class="meal-item"><span class="meal-time">10h</span><span class="meal-content">Caldo huesos + 3 nueces Brasil</span></li>
+                        <li class="meal-item"><span class="meal-time">12h</span><span class="meal-content">Pollo 150g + calabacín + 1/2 aguacate</span></li>
+                        <li class="meal-item"><span class="meal-time">14h</span><span class="meal-content">Caminata enérgica 30 min + yoga suave</span></li>
+                        <li class="meal-item"><span class="meal-time">16h</span><span class="meal-content">Caldo + pepino + aceitunas</span></li>
+                        <li class="meal-item"><span class="meal-time">18h</span><span class="meal-content">5g Glutamina en caldo (reparación intestinal)</span></li>
+                    </ul>
+                </div>
+                
+                <div class="day-container">
+                    <div class="day-title"><i class="fas fa-heartbeat"></i> DÍA 3 - Microbiota + Antiinflamatorio</div>
+                    <ul class="meal-list">
+                        <li class="meal-item"><span class="meal-time">8h</span><span class="meal-content">2 huevos + calabacín + AOVE</span></li>
+                        <li class="meal-item"><span class="meal-time">10h</span><span class="meal-content">Manzana verde + 4 nueces Brasil</span></li>
+                        <li class="meal-item"><span class="meal-time">12h</span><span class="meal-content">Pescado blanco 150g + calabaza asada</span></li>
+                        <li class="meal-item"><span class="meal-time">14h</span><span class="meal-content">Hummus + crudités (zanahoria, pepino)</span></li>
+                        <li class="meal-item"><span class="meal-time">16h</span><span class="meal-content">Cordero 150g + brócoli al vapor</span></li>
+                        <li class="meal-item"><span class="meal-time">18h</span><span class="meal-content">1g Cúrcuma + pimienta negra (antiinflamatorio)</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tabla de monitoreo -->
+        <div class="monitoring-section">
+            <h2 class="section-title"><i class="fas fa-clipboard-check"></i> MONITOREO CRÍTICO (Días 1-7)</h2>
+            
+            <table class="monitoring-table">
+                <thead>
+                    <tr>
+                        <th>Métrica</th>
+                        <th>Objetivo / Normal</th>
+                        <th>Acción si se Desvía</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="metric">Pulso en reposo</td>
+                        <td>60-90 lpm</td>
+                        <td class="action">Descansar, tomar caldo con electrolitos</td>
+                    </tr>
+                    <tr>
+                        <td class="metric">Síntomas digestivos</td>
+                        <td>Ninguno o leves</td>
+                        <td class="action">Hinchazón/dolor: Saltar siguiente comida, solo caldo. Diarrea: Reducir volumen</td>
+                    </tr>
+                    <tr>
+                        <td class="metric">Energía/Ánimo</td>
+                        <td>Estable, mejora progresiva</td>
+                        <td class="action">Mareo: Medir glucosa (<70 = caldo). Niebla mental: Aumentar sodio + batata</td>
+                    </tr>
+                    <tr>
+                        <td class="metric">Peso (mañana)</td>
+                        <td>Estabilizar o subir 0.5-1 kg D1→D3</td>
+                        <td class="action">Si sigue bajando: +200-300 kcal (más AOVE, aguacate)</td>
+                    </tr>
+                    <tr>
+                        <td class="metric">Sueño</td>
+                        <td>Profundo, reparador</td>
+                        <td class="action">Insomnio: +Mg 400mg nocturno, reducir café</td>
+                    </tr>
+                    <tr>
+                        <td class="metric">Signos Alerta (Sarai)</td>
+                        <td>Sin dolor articular, hinchazón extrema</td>
+                        <td class="action">Cualquier aparición: Dieta eliminación (caldo, vegetales, carne)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Nota importante -->
+        <div class="important-note">
+            <div class="note-title"><i class="fas fa-exclamation-triangle"></i> NOTA CRÍTICA PARA SARAI</div>
+            <p>Este protocolo es un experimento único y supervisado. Antes de cualquier nuevo ayuno prolongado, la <strong>consulta endocrinológica con pruebas de base (TSH, T3L, T4L, anticuerpos tiroideos) es no negociable</strong>. Los lácteos deben evitarse completamente hasta el día 7+ y solo reintroducirse si se confirma tolerancia. Escucha tu cuerpo: cualquier signo de inflamación (dolor articular, hinchazón, niebla mental persistente) requiere detener inmediatamente el protocolo y volver a alimentos base (caldo, vegetales cocidos, carnes magras).</p>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="rune-decoration">ᚠ ᚢ ᚦ ᚬ ᚱ ᚴ</div>
+            <p><strong>Protocolos Ancestrales de Regeneración</strong> - Diseñado para activar los caminos de longevidad y fuerza mitocondrial</p>
+            <p>Inspirado en la sabiduría de los vikingos, cazadores-recolectores y la búsqueda de la vida eterna a través de la autofagia y PGC-1α</p>
+            <p style="margin-top: 15px; color: var(--color-secondary);">"La fuerza no viene de lo que puedes hacer, viene de superar lo que pensabas que no podías"</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Crear estrellas aleatorias en el fondo
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightningContainer = document.getElementById('lightning-container');
+            
+            // Crear estrellas
+            for(let i = 0; i < 80; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Tamaño aleatorio
+                const size = Math.random() * 3;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Posición aleatoria
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // Opacidad aleatoria
+                star.style.opacity = Math.random() * 0.7 + 0.1;
+                
+                // Animación con retraso aleatorio
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                
+                lightningContainer.appendChild(star);
+            }
+            
+            // Efecto de iluminación al pasar sobre elementos de comida
+            const mealItems = document.querySelectorAll('.meal-item');
+            mealItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 0 15px rgba(255, 204, 0, 0.3)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = 'none';
+                });
+            });
+            
+            // Efecto de título dinámico
+            const title = document.querySelector('h1');
+            let hue = 0;
+            
+            setInterval(() => {
+                hue = (hue + 0.5) % 360;
+                title.style.background = `linear-gradient(to right, hsl(${hue}, 100%, 60%), hsl(${(hue + 30) % 360}, 100%, 60%), hsl(${(hue + 60) % 360}, 100%, 60%))`;
+                title.style.webkitBackgroundClip = 'text';
+                title.style.backgroundClip = 'text';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
